@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito | Maison Elegance</title>
+    <meta
+      name="description"
+      content="Revisa los productos agregados al carrito, cantidades, subtotal, impuestos y total de compra en Maison Elegance."
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-brand-ink: #0f172a;
+        --color-brand-wine: #7f1d1d;
+        --color-brand-cream: #fff8ef;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+      }
+
+      .font-display {
+        font-family: "Prata", serif;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Carrito Maison Elegance",
+        "description": "Vista completa del carrito de compras con totalizacion."
+      }
+    </script>
+  </head>
+  <body class="bg-brand-cream text-brand-ink">
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="index.html" class="font-display text-2xl tracking-wide text-brand-wine">Maison Elegance</a>
+          <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">
+            <label for="buscar" class="sr-only">Buscar productos</label>
+            <input
+              id="buscar"
+              name="buscar"
+              type="search"
+              placeholder="Buscar blazers, vestidos, accesorios..."
+              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine"
+            />
+          </form>
+          <nav aria-label="Cuenta" class="flex items-center gap-4 text-sm font-semibold">
+            <a href="checkout.html" class="hover:text-brand-wine">Mi cuenta</a>
+            <a href="carrito.html" class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine">Carrito</a>
+          </nav>
+        </div>
+        <nav aria-label="Principal" class="mt-3 flex flex-wrap gap-5 text-sm font-semibold text-slate-700">
+          <a href="index.html" class="hover:text-brand-wine">Home</a>
+          <a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a>
+          <a href="producto.html" class="hover:text-brand-wine">Vista de producto</a>
+          <a href="carrito.html" class="text-brand-wine">Carrito</a>
+          <a href="checkout.html" class="hover:text-brand-wine">Checkout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <h1 class="font-display text-4xl text-slate-900">Tu carrito</h1>
+      <p class="mt-2 text-slate-700">Revisa tus productos antes de continuar al pago.</p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-3">
+        <section class="space-y-4 lg:col-span-2">
+          <article class="grid gap-4 rounded-2xl bg-white p-4 shadow sm:grid-cols-[110px_1fr_auto] sm:items-center">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500&q=80" alt="Blazer Montmartre" class="h-24 w-full rounded-xl object-cover">
+            <div>
+              <h2 class="font-semibold">Blazer Montmartre</h2>
+              <p class="text-sm text-slate-600">Precio unitario: 129.00 EUR</p>
+              <label for="cant-1" class="mt-2 block text-sm font-semibold">Cantidad</label>
+              <input id="cant-1" type="number" min="1" value="1" class="mt-1 w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm">
+            </div>
+            <p class="text-lg font-bold">129.00 EUR</p>
+          </article>
+
+          <article class="grid gap-4 rounded-2xl bg-white p-4 shadow sm:grid-cols-[110px_1fr_auto] sm:items-center">
+            <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=500&q=80" alt="Vestido Louvre" class="h-24 w-full rounded-xl object-cover">
+            <div>
+              <h2 class="font-semibold">Vestido Louvre</h2>
+              <p class="text-sm text-slate-600">Precio unitario: 149.00 EUR</p>
+              <label for="cant-2" class="mt-2 block text-sm font-semibold">Cantidad</label>
+              <input id="cant-2" type="number" min="1" value="1" class="mt-1 w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm">
+            </div>
+            <p class="text-lg font-bold">149.00 EUR</p>
+          </article>
+
+          <article class="grid gap-4 rounded-2xl bg-white p-4 shadow sm:grid-cols-[110px_1fr_auto] sm:items-center">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=500&q=80" alt="Camisa Rive Gauche" class="h-24 w-full rounded-xl object-cover">
+            <div>
+              <h2 class="font-semibold">Camisa Rive Gauche</h2>
+              <p class="text-sm text-slate-600">Precio unitario: 79.00 EUR</p>
+              <label for="cant-3" class="mt-2 block text-sm font-semibold">Cantidad</label>
+              <input id="cant-3" type="number" min="1" value="2" class="mt-1 w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm">
+            </div>
+            <p class="text-lg font-bold">158.00 EUR</p>
+          </article>
+        </section>
+
+        <aside class="h-fit rounded-2xl bg-white p-5 shadow">
+          <h2 class="font-display text-2xl text-slate-900">Resumen</h2>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div class="flex items-center justify-between">
+              <dt class="text-slate-600">Subtotal</dt>
+              <dd class="font-semibold">436.00 EUR</dd>
+            </div>
+            <div class="flex items-center justify-between">
+              <dt class="text-slate-600">Impuestos (21%)</dt>
+              <dd class="font-semibold">91.56 EUR</dd>
+            </div>
+            <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
+              <dt class="font-bold text-slate-900">Total</dt>
+              <dd class="text-xl font-extrabold text-brand-wine">527.56 EUR</dd>
+            </div>
+          </dl>
+          <a href="checkout.html" class="mt-6 block w-full rounded-full bg-brand-ink px-6 py-3 text-center text-sm font-bold text-white hover:bg-brand-wine">
+            Comprar
+          </a>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
+        <section>
+          <h2 class="font-display text-xl text-slate-900">Categorias</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Calzado</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Camisas</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Pantalones</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Accesorios</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="font-display text-xl text-slate-900">Legal</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li><a href="#" class="hover:text-brand-wine">Terminos y condiciones</a></li>
+            <li><a href="#" class="hover:text-brand-wine">Politica de privacidad</a></li>
+            <li><a href="#" class="hover:text-brand-wine">Sobre la marca</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="font-display text-xl text-slate-900">Contacto</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li>Email: support@maison-elegance.fr</li>
+            <li>Telefono: +33 1 22 33 44 55</li>
+            <li>Paris, Francia</li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

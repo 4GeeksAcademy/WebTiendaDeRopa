@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maison Elegance | Moda francesa contemporanea</title>
+    <meta
+      name="description"
+      content="Descubre la nueva tienda online de Maison Elegance: nuevos lanzamientos, mas vendidos y moda premium con estilo frances."
+    />
+    <meta
+      name="keywords"
+      content="tienda de ropa, moda francesa, catalogo de ropa, ecommerce fashion, maison elegance"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/tailwindcss">
+      @theme {
+        --color-brand-ink: #0f172a;
+        --color-brand-wine: #7f1d1d;
+        --color-brand-cream: #fff8ef;
+        --color-brand-gold: #b38a3e;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+      }
+
+      .font-display {
+        font-family: "Prata", serif;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Maison Elegance",
+            "url": "https://example.com",
+            "logo": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
+          },
+          {
+            "@type": "WebSite",
+            "name": "Maison Elegance",
+            "url": "https://example.com",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://example.com/catalogo.html?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-brand-cream text-brand-ink">
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <a href="index.html" class="font-display text-2xl tracking-wide text-brand-wine">Maison Elegance</a>
+          <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">
+            <label for="buscar" class="sr-only">Buscar productos</label>
+            <input
+              id="buscar"
+              name="buscar"
+              type="search"
+              placeholder="Buscar blazers, vestidos, accesorios..."
+              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine"
+            />
+          </form>
+          <nav aria-label="Cuenta" class="flex items-center gap-4 text-sm font-semibold">
+            <a href="checkout.html" class="hover:text-brand-wine">Mi cuenta</a>
+            <a href="carrito.html" class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine">Carrito</a>
+          </nav>
+        </div>
+        <nav aria-label="Principal" class="mt-3 flex flex-wrap gap-5 text-sm font-semibold text-slate-700">
+          <a href="index.html" class="text-brand-wine">Home</a>
+          <a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a>
+          <a href="producto.html" class="hover:text-brand-wine">Vista de producto</a>
+          <a href="carrito.html" class="hover:text-brand-wine">Carrito</a>
+          <a href="checkout.html" class="hover:text-brand-wine">Checkout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#fef3c7,_transparent_45%),radial-gradient(circle_at_bottom_right,_#fee2e2,_transparent_40%)]"></div>
+        <div class="relative mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
+          <article>
+            <p class="mb-3 inline-block rounded-full bg-white px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-brand-wine">
+              Coleccion Primavera Paris 2026
+            </p>
+            <h1 class="font-display text-4xl leading-tight text-slate-900 md:text-5xl">
+              Moda urbana francesa para quienes marcan tendencia
+            </h1>
+            <p class="mt-5 max-w-xl text-base leading-7 text-slate-700">
+              Explora piezas diseñadas para combinar elegancia y comodidad en el dia a dia. Encuentra prendas de edicion limitada con acabados premium.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="catalogo.html" class="rounded-full bg-brand-ink px-6 py-3 text-sm font-bold text-white hover:bg-brand-wine">
+                Explorar catalogo
+              </a>
+              <a href="producto.html" class="rounded-full border border-brand-ink px-6 py-3 text-sm font-bold text-brand-ink hover:bg-white">
+                Ver producto destacado
+              </a>
+            </div>
+          </article>
+          <article class="rounded-3xl bg-white p-4 shadow-xl shadow-slate-300/50">
+            <img
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
+              alt="Modelo con look urbano y elegante"
+              class="h-96 w-full rounded-2xl object-cover"
+            />
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="mb-6 flex items-end justify-between">
+          <h2 class="font-display text-3xl text-slate-900">Nuevos lanzamientos</h2>
+          <a href="catalogo.html" class="text-sm font-bold text-brand-wine">Ver todo</a>
+        </div>
+        <div class="flex gap-5 overflow-x-auto pb-2">
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=700&q=80" alt="Blazer beige" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Blazer Montmartre</h3>
+            <p class="text-sm text-slate-600">129.00 EUR</p>
+          </article>
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=700&q=80" alt="Vestido negro" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Vestido Louvre</h3>
+            <p class="text-sm text-slate-600">149.00 EUR</p>
+          </article>
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=700&q=80" alt="Camisa blanca" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Camisa Rive Gauche</h3>
+            <p class="text-sm text-slate-600">79.00 EUR</p>
+          </article>
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=700&q=80" alt="Pantalon sastre" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Pantalon Cannes</h3>
+            <p class="text-sm text-slate-600">95.00 EUR</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div class="mb-6 flex items-end justify-between">
+          <h2 class="font-display text-3xl text-slate-900">Mas vendidos</h2>
+          <a href="catalogo.html" class="text-sm font-bold text-brand-wine">Ver todo</a>
+        </div>
+        <div class="flex gap-5 overflow-x-auto pb-2">
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80" alt="Gabardina clasica" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Gabardina Marais</h3>
+            <p class="text-sm text-slate-600">179.00 EUR</p>
+          </article>
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=80" alt="Conjunto neutro" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Set Bastille</h3>
+            <p class="text-sm text-slate-600">139.00 EUR</p>
+          </article>
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80" alt="Falda midi" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Falda Opera</h3>
+            <p class="text-sm text-slate-600">89.00 EUR</p>
+          </article>
+          <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
+            <img src="https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=700&q=80" alt="Accesorios premium" class="h-64 w-full rounded-xl object-cover" />
+            <h3 class="mt-3 font-semibold">Pack Saint-Honore</h3>
+            <p class="text-sm text-slate-600">62.00 EUR</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
+        <section>
+          <h2 class="font-display text-xl text-slate-900">Categorias</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Calzado</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Camisas</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Pantalones</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Accesorios</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="font-display text-xl text-slate-900">Legal</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li><a href="#" class="hover:text-brand-wine">Terminos y condiciones</a></li>
+            <li><a href="#" class="hover:text-brand-wine">Politica de privacidad</a></li>
+            <li><a href="#" class="hover:text-brand-wine">Sobre la marca</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="font-display text-xl text-slate-900">Contacto</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li>Email: support@maison-elegance.fr</li>
+            <li>Telefono: +33 1 22 33 44 55</li>
+            <li>Paris, Francia</li>
+          </ul>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>
