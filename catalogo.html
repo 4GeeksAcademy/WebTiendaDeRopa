@@ -29,6 +29,16 @@
       .font-display {
         font-family: "Prata", serif;
       }
+
+      section[aria-label="Listado de productos"] article {
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        section[aria-label="Listado de productos"] article:hover {
+          transform: scale(1.02);
+        }
+      }
     </style>
     <script type="application/ld+json">
       {
@@ -112,6 +122,8 @@
               <option>Calzado</option>
               <option>Camisas</option>
               <option>Pantalones</option>
+              <option>Vestidos y faldas</option>
+              <option>Abrigos</option>
               <option>Accesorios</option>
             </select>
           </div>
@@ -130,7 +142,6 @@
             <label for="orden" class="mb-1 block text-sm font-semibold text-slate-700">Ordenar</label>
             <select id="orden" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
               <option>Mas recientes</option>
-              <option>Mas vendidos</option>
               <option>Precio ascendente</option>
               <option>Precio descendente</option>
             </select>
@@ -139,30 +150,30 @@
       </section>
 
       <section aria-label="Listado de productos" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Producto 1" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Blazer Montmartre</h2><p class="text-sm text-slate-600">129.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=600&q=80" alt="Producto 2" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Vestido Louvre</h2><p class="text-sm text-slate-600">149.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" alt="Producto 3" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Camisa Rive Gauche</h2><p class="text-sm text-slate-600">79.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://siercomoda.com/wp-content/uploads/2024/08/pantalon-cannes-negro-mod-aw25-eseoese-1_l-683x1024.webp" alt="Producto 4" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Pantalon Cannes</h2><p class="text-sm text-slate-600">95.00 EUR</p></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Blazer Montmartre" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Blazer Montmartre</h2><p class="text-sm text-slate-600">129.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagenvestido.jpg" alt="Vestido Louvre" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Vestido Louvre</h2><p class="text-sm text-slate-600">149.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen16.jpg" alt="Camisa Rive Gauche" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Camisa Rive Gauche</h2><p class="text-sm text-slate-600">79.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen17.jpg" alt="Pantalon Cannes" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Pantalon Cannes</h2><p class="text-sm text-slate-600">95.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
 
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Producto 5" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Gabardina Marais</h2><p class="text-sm text-slate-600">179.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80" alt="Producto 6" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Set Bastille</h2><p class="text-sm text-slate-600">139.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://img01.ztat.net/article/spp-media-p1/60e0ada3bdf04d2c88a0ea05aa7ef381/ba7bb117f4294cab9b8db54de0247d81.jpg?imwidth=300&filter=packshot" alt="Producto 7" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Falda Opera</h2><p class="text-sm text-slate-600">89.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://www.beautyhabit.com/cdn/shop/files/49805-6-min.jpg?v=1717783137" alt="Producto 8" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Pack Saint-Honore</h2><p class="text-sm text-slate-600">62.00 EUR</p></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagengabardina.avif" alt="Gabardina Marais" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Gabardina Marais</h2><p class="text-sm text-slate-600">179.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80" alt="Set Bastille" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Set Bastille</h2><p class="text-sm text-slate-600">139.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen5.jpg" alt="Falda Opera" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Falda Opera</h2><p class="text-sm text-slate-600">89.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen6.webp" alt="Sombrero Palais" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Sombrero Palais</h2><p class="text-sm text-slate-600">62.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
 
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Producto 9" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Vestido Seine</h2><p class="text-sm text-slate-600">155.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=600&q=80" alt="Producto 10" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Top Le Marais</h2><p class="text-sm text-slate-600">68.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://img.kwcdn.com/product/temu-avi/image-crop/55842614-5421-43b6-b29d-4f5e857b897d.jpg" alt="Producto 11" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Camisa Monceau</h2><p class="text-sm text-slate-600">84.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://f.fcdn.app/imgs/622f12/benicia.uy/beniuy/578c/original/catalogo/PANTALONIVO_PANTALONIVO_1/460x690/pantalon-ivori-pantalon-ivori.jpg" alt="Producto 12" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Pantalon Elysee</h2><p class="text-sm text-slate-600">102.00 EUR</p></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagenseine.jpg" alt="Vestido Seine" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Vestido Seine</h2><p class="text-sm text-slate-600">155.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=600&q=80" alt="Top Le Marais" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Top Le Marais</h2><p class="text-sm text-slate-600">68.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen22.jpg" alt="Camisa Monceau" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Camisa Monceau</h2><p class="text-sm text-slate-600">84.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagepantaloncito.jpg" alt="Pantalon Elysee" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Pantalon Elysee</h2><p class="text-sm text-slate-600">102.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
 
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80" alt="Producto 13" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Blusa Palais</h2><p class="text-sm text-slate-600">73.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://c.imgz.jp/959/79345959/79345959_1_d_500.jpg" alt="Producto 14" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Chaqueta Sorbonne</h2><p class="text-sm text-slate-600">162.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://m.media-amazon.com/images/I/61WpD1LOloL.jpg" alt="Producto 15" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Falda Tuileries</h2><p class="text-sm text-slate-600">92.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://anapuebla.com/wp-content/uploads/2025/09/woven-short-coat-with-double-breasted-closure_ac9cce7c-49ef-4a5a-b772-ac7241d36876-300x300.webp" alt="Producto 16" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Abrigo Rivoli</h2><p class="text-sm text-slate-600">205.00 EUR</p></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen19.webp" alt="Blusa Palais" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Blusa Palais</h2><p class="text-sm text-slate-600">73.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen23.webp" alt="Chaqueta Sorbonne" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Chaqueta Sorbonne</h2><p class="text-sm text-slate-600">162.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen24.webp" alt="Falda Tuileries" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Falda Tuileries</h2><p class="text-sm text-slate-600">92.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen12.jpg" alt="Abrigo Rivoli" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Abrigo Rivoli</h2><p class="text-sm text-slate-600">205.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
 
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Producto 17" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Reloj Lumiere</h2><p class="text-sm text-slate-600">110.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Producto 18" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Bolso Marigny</h2><p class="text-sm text-slate-600">126.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://icesticfootwear.com.ng/wp-content/uploads/2024/07/fashion-white-sneakers-2.jpeg" alt="Producto 19" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Sneakers Concorde</h2><p class="text-sm text-slate-600">98.00 EUR</p></article>
-        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1475180098004-ca77a66827be?auto=format&fit=crop&w=600&q=80" alt="Producto 20" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Cinturon Vendome</h2><p class="text-sm text-slate-600">54.00 EUR</p></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Reloj Lumiere" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Reloj Lumiere</h2><p class="text-sm text-slate-600">110.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Bolso Marigny" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Bolso Marigny</h2><p class="text-sm text-slate-600">126.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagensneaker.jpg" alt="Sneakers Concorde" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Sneakers Concorde</h2><p class="text-sm text-slate-600">98.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
+        <article class="rounded-2xl bg-white p-3 shadow"><img src="imagenescatalogo/imagen14.jpg" alt="Cinturon Vendome" class="h-64 w-full rounded-xl object-cover"><h2 class="mt-3 font-semibold">Cinturon Vendome</h2><p class="text-sm text-slate-600">54.00 EUR</p><button class="mt-3 w-full rounded-xl bg-brand-wine px-4 py-2 text-white font-semibold hover:bg-brand-ink transition">Agregar al carrito</button></article>
       </section>
     </main>
 
@@ -195,24 +206,196 @@
         </section>
       </div>
     </footer>
-    <script>
-      const menuToggle = document.getElementById("menu-toggle");
-      const mobileMenu = document.getElementById("menu-mobile");
 
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener("click", () => {
-          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-          menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-          mobileMenu.classList.toggle("hidden");
+    <script>
+      const CARRITO_KEY = "maisonEleganceCarrito";
+
+      function slugify(value) {
+        return value
+          .toLowerCase()
+          .trim()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      function obtenerCarrito() {
+        try {
+          const data = localStorage.getItem(CARRITO_KEY);
+          return data ? JSON.parse(data) : [];
+        } catch {
+          return [];
+        }
+      }
+
+      function guardarCarrito(carrito) {
+        localStorage.setItem(CARRITO_KEY, JSON.stringify(carrito));
+      }
+
+      function mostrarMensaje(texto) {
+        const existente = document.getElementById("cart-feedback");
+        if (existente) existente.remove();
+
+        const aviso = document.createElement("p");
+        aviso.id = "cart-feedback";
+        aviso.className =
+          "fixed bottom-4 right-4 z-50 rounded-xl bg-brand-ink px-4 py-2 text-sm font-semibold text-white shadow-lg";
+        aviso.textContent = texto;
+        document.body.appendChild(aviso);
+
+        setTimeout(() => {
+          aviso.remove();
+        }, 1800);
+      }
+
+      function agregarProducto(producto) {
+        const carrito = obtenerCarrito();
+        const existente = carrito.find((item) => item.id === producto.id);
+
+        if (existente) {
+          existente.cantidad += 1;
+        } else {
+          carrito.push({ ...producto, cantidad: 1 });
+        }
+
+        guardarCarrito(carrito);
+        mostrarMensaje(`${producto.nombre} agregado al carrito`);
+      }
+
+      const categoriaSelect = document.getElementById("categoria");
+      const tallaSelect = document.getElementById("talla");
+      const ordenSelect = document.getElementById("orden");
+      const listadoProductos = document.querySelector('section[aria-label="Listado de productos"]');
+      const productos = document.querySelectorAll('section[aria-label="Listado de productos"] article');
+      const ordenOriginalCards = [...productos];
+
+      function esAccesorio(nombreProducto) {
+        const nombre = nombreProducto.trim().toLowerCase();
+        return (
+          nombre.includes("bolso") ||
+          nombre.includes("reloj") ||
+          nombre.includes("top") ||
+          nombre.includes("set bastille") ||
+          nombre.includes("sombrero") ||
+          nombre.includes("cinturon") ||
+          nombre.includes("sneakers")
+        );
+      }
+
+      function perteneceCategoria(nombreProducto, categoria) {
+        const nombre = nombreProducto.trim().toLowerCase();
+
+        if (categoria === "Todas") return true;
+        if (categoria === "Calzado") return nombre.includes("sneakers");
+        if (categoria === "Camisas") return nombre.includes("camisa") || nombre.includes("blusa");
+        if (categoria === "Pantalones") return nombre.includes("pantalon");
+        if (categoria === "Vestidos y faldas") return nombre.includes("vestido") || nombre.includes("falda");
+        if (categoria === "Abrigos") {
+          return (
+            nombre.includes("chaqueta") ||
+            nombre.includes("abrigo") ||
+            nombre.includes("gabardina") ||
+            nombre.includes("blazer")
+          );
+        }
+        if (categoria === "Accesorios") {
+          return (
+            nombre.includes("bolso") ||
+            nombre.includes("reloj") ||
+            nombre.includes("top") ||
+            nombre.includes("set bastille") ||
+            nombre.includes("sombrero")
+          );
+        }
+
+        return true;
+      }
+
+      function aplicarFiltroCategoria() {
+        const categoriaSeleccionada = categoriaSelect ? categoriaSelect.value : "Todas";
+        const tallaSeleccionada = tallaSelect ? tallaSelect.value : "Todas";
+
+        productos.forEach((card) => {
+          const nombre = card.querySelector("h2");
+          if (!nombre) return;
+
+          const coincideCategoria = perteneceCategoria(nombre.textContent, categoriaSeleccionada);
+          const ocultarPorTalla = tallaSeleccionada !== "Todas" && esAccesorio(nombre.textContent);
+
+          card.style.display = coincideCategoria && !ocultarPorTalla ? "" : "none";
         });
 
-        window.addEventListener("resize", () => {
-          if (window.innerWidth >= 768) {
-            mobileMenu.classList.add("hidden");
-            menuToggle.setAttribute("aria-expanded", "false");
-          }
+        aplicarOrdenPrecio();
+      }
+
+      function obtenerPrecioCard(card) {
+        const precio = card.querySelector("p");
+        if (!precio) return 0;
+        const valor = Number.parseFloat(precio.textContent.replace(" EUR", ""));
+        return Number.isNaN(valor) ? 0 : valor;
+      }
+
+      function aplicarOrdenPrecio() {
+        if (!listadoProductos) return;
+
+        const criterio = ordenSelect ? ordenSelect.value : "Mas recientes";
+        let cardsOrdenadas = [...ordenOriginalCards];
+
+        if (criterio === "Precio ascendente" || criterio === "Precio descendente") {
+          cardsOrdenadas = [...productos].sort((a, b) => {
+            const precioA = obtenerPrecioCard(a);
+            const precioB = obtenerPrecioCard(b);
+            return criterio === "Precio ascendente" ? precioA - precioB : precioB - precioA;
+          });
+        }
+
+        cardsOrdenadas.forEach((card) => {
+          listadoProductos.appendChild(card);
         });
       }
+
+      if (categoriaSelect) {
+        categoriaSelect.addEventListener("change", aplicarFiltroCategoria);
+      }
+
+      if (tallaSelect) {
+        tallaSelect.addEventListener("change", aplicarFiltroCategoria);
+      }
+
+      if (ordenSelect) {
+        ordenSelect.addEventListener("change", aplicarOrdenPrecio);
+      }
+
+      productos.forEach((card) => {
+        const imagen = card.querySelector("img");
+        const nombre = card.querySelector("h2");
+        const precio = card.querySelector("p");
+        const botones = card.querySelectorAll("button");
+
+        if (!imagen || !nombre || !precio) return;
+
+        const boton = botones[0];
+        if (!boton) return;
+
+        for (let i = 1; i < botones.length; i += 1) {
+          botones[i].remove();
+        }
+
+        boton.addEventListener("click", () => {
+          const precioNumerico = Number.parseFloat(precio.textContent.replace(" EUR", ""));
+          agregarProducto({
+            id: slugify(nombre.textContent),
+            nombre: nombre.textContent.trim(),
+            precio: Number.isNaN(precioNumerico) ? 0 : precioNumerico,
+            imagen: imagen.src,
+          });
+        });
+
+        card.appendChild(boton);
+      });
+
+      aplicarFiltroCategoria();
     </script>
   </body>
 </html>
