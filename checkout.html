@@ -1,25 +1,43 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout | Maison Elegance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Moderno | Maison Elegance</title>
     <meta
       name="description"
-      content="Finaliza tu compra en 3 pasos: datos personales, direccion de entrega y pago con tarjeta en Maison Elegance."
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      content="Checkout multistep moderno y responsive en 3 pasos con validaciones en tiempo real.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-night": "#fff8ef",
+              "brand-carbon": "#fffdf8",
+              "brand-panel": "#ffffff",
+              "brand-soft": "#e2e8f0",
+              "brand-sky": "#7f1d1d",
+              "brand-sky-strong": "#991b1b",
+              "brand-ink": "#0f172a",
+              "brand-muted": "#475569",
+              "brand-error": "#fb7185",
+              "brand-ok": "#16a34a"
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap"
       rel="stylesheet"
-    />
-    <style type="text/tailwindcss">
-      @theme {
-        --color-brand-ink: #0f172a;
-        --color-brand-wine: #7f1d1d;
-        --color-brand-cream: #fff8ef;
+    >
+    <style>
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -29,144 +47,547 @@
       .font-display {
         font-family: "Prata", serif;
       }
+
+      @keyframes fade-slide {
+        0% {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse-line {
+        0% {
+          transform: scaleX(0.45);
+          opacity: 0.35;
+        }
+        100% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+      }
+
+      .animate-fade-slide {
+        animation: fade-slide 450ms ease both;
+      }
+
+      .animate-progress-line {
+        transform-origin: left center;
+        animation: pulse-line 420ms ease;
+      }
     </style>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CheckoutPage",
         "name": "Checkout Maison Elegance",
-        "description": "Formulario de pago de tres pasos para finalizar la compra."
+        "description": "Formulario de checkout moderno de 3 pasos para finalizar la compra."
       }
     </script>
   </head>
-  <body class="bg-brand-cream text-brand-ink">
-    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap items-center justify-between gap-4">
-          <a href="index.html" class="font-display text-2xl tracking-wide text-brand-wine">Maison Elegance</a>
-          <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">
+  <body class="flex min-h-screen flex-col overflow-x-hidden bg-brand-night text-brand-ink antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-ink">
+      Saltar al contenido principal
+    </a>
+    <div
+      class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(179,138,62,0.18),transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(127,29,29,0.12),transparent_35%)]"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Navbar reutilizable -->
+    <header class="sticky top-0 z-50 border-b border-brand-soft/80 bg-brand-carbon/80 backdrop-blur-xl">
+      <div class="mx-auto max-w-[1800px] px-4 py-3 sm:px-6 lg:px-10 2xl:px-16">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <a href="index.html" class="font-display text-2xl tracking-wide text-brand-sky sm:text-3xl">Maison Elegance</a>
+          <button
+            id="mobileMenuButton"
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-brand-soft bg-brand-panel text-brand-ink transition hover:border-brand-sky hover:text-brand-sky sm:hidden"
+            aria-label="Abrir menu de navegacion"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-6 w-6" aria-hidden="true">
+              <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+          <form class="order-3 w-full sm:order-none sm:max-w-md sm:flex-1" role="search" aria-label="Buscar en la tienda">
             <label for="buscar" class="sr-only">Buscar productos</label>
             <input
               id="buscar"
               name="buscar"
               type="search"
-              placeholder="Buscar blazers, vestidos, accesorios..."
-              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine"
-            />
+              placeholder="Buscar blazers, vestidos, accesorios"
+              class="w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-2.5 text-base text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/40">
           </form>
-          <nav aria-label="Cuenta" class="flex items-center gap-4 text-sm font-semibold">
-            <a href="checkout.html" class="text-brand-wine">Mi cuenta</a>
-            <a href="carrito.html" class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine">Carrito</a>
+          <nav aria-label="Cuenta" class="hidden items-center gap-2 text-base font-semibold sm:flex sm:gap-4">
+            <a href="checkout.html" class="rounded-xl px-3 py-2 text-brand-sky transition hover:bg-brand-panel">Mi cuenta</a>
+            <a
+              href="carrito.html"
+              class="rounded-xl bg-brand-sky px-4 py-2 text-brand-night transition hover:bg-brand-sky-strong"
+            >
+              Carrito
+            </a>
           </nav>
         </div>
-        <nav aria-label="Principal" class="mt-3 flex flex-wrap gap-5 text-sm font-semibold text-slate-700">
-          <a href="index.html" class="hover:text-brand-wine">Home</a>
-          <a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a>
-          <a href="producto.html" class="hover:text-brand-wine">Vista de producto</a>
-          <a href="carrito.html" class="hover:text-brand-wine">Carrito</a>
-          <a href="checkout.html" class="text-brand-wine">Checkout</a>
+        <nav aria-label="Principal" class="mt-3 hidden flex-wrap gap-2 text-base font-medium text-brand-muted sm:flex sm:gap-3">
+          <a href="index.html" class="rounded-lg px-3 py-1.5 transition hover:bg-brand-panel hover:text-brand-ink">Home</a>
+          <a href="catalogo.html" class="rounded-lg px-3 py-1.5 transition hover:bg-brand-panel hover:text-brand-ink">Catalogo</a>
+          <a href="producto.html" class="rounded-lg px-3 py-1.5 transition hover:bg-brand-panel hover:text-brand-ink">Producto</a>
+          <a href="carrito.html" class="rounded-lg px-3 py-1.5 transition hover:bg-brand-panel hover:text-brand-ink">Carrito</a>
+          <a href="checkout.html" class="rounded-lg bg-brand-panel px-3 py-1.5 text-brand-sky">Checkout</a>
+        </nav>
+        <nav
+          id="mobileMenu"
+          aria-label="Menu movil"
+          class="mt-3 hidden flex-col gap-2 rounded-2xl border border-brand-soft bg-brand-panel p-3 text-base font-medium text-brand-muted sm:hidden"
+        >
+          <a href="index.html" class="rounded-lg px-3 py-2 transition hover:bg-brand-carbon hover:text-brand-ink">Home</a>
+          <a href="catalogo.html" class="rounded-lg px-3 py-2 transition hover:bg-brand-carbon hover:text-brand-ink">Catalogo</a>
+          <a href="producto.html" class="rounded-lg px-3 py-2 transition hover:bg-brand-carbon hover:text-brand-ink">Producto</a>
+          <a href="carrito.html" class="rounded-lg px-3 py-2 transition hover:bg-brand-carbon hover:text-brand-ink">Carrito</a>
+          <a href="checkout.html" class="rounded-lg bg-brand-carbon px-3 py-2 text-brand-sky">Checkout</a>
+          <div class="my-1 h-px bg-brand-soft" aria-hidden="true"></div>
+          <a href="checkout.html" class="rounded-lg px-3 py-2 font-semibold text-brand-sky transition hover:bg-brand-carbon">Mi cuenta</a>
         </nav>
       </div>
     </header>
 
-    <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-      <header>
-        <h1 class="font-display text-4xl text-slate-900">Checkout</h1>
-        <p class="mt-2 text-slate-700">Completa los 3 pasos para finalizar tu compra.</p>
-      </header>
-
-      <ol class="mt-6 grid gap-3 rounded-2xl bg-white p-4 text-sm font-semibold shadow sm:grid-cols-3">
-        <li class="rounded-xl bg-brand-ink px-3 py-2 text-center text-white">1. Datos personales</li>
-        <li class="rounded-xl border border-slate-300 px-3 py-2 text-center">2. Direccion de entrega</li>
-        <li class="rounded-xl border border-slate-300 px-3 py-2 text-center">3. Pago con tarjeta</li>
-      </ol>
-
-      <form class="mt-8 space-y-6">
-        <section class="rounded-2xl bg-white p-6 shadow" aria-labelledby="paso1">
-          <h2 id="paso1" class="font-display text-2xl text-slate-900">Paso 1: Datos personales</h2>
-          <div class="mt-4 grid gap-4 sm:grid-cols-2">
-            <div>
-              <label for="nombre" class="mb-1 block text-sm font-semibold">Nombre</label>
-              <input id="nombre" type="text" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
-            <div>
-              <label for="apellido" class="mb-1 block text-sm font-semibold">Apellido</label>
-              <input id="apellido" type="text" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
-            <div class="sm:col-span-2">
-              <label for="email" class="mb-1 block text-sm font-semibold">Correo electronico</label>
-              <input id="email" type="email" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
+    <main id="main-content" class="mx-auto w-full max-w-[1800px] px-4 py-8 sm:px-6 sm:py-12 lg:flex lg:min-h-[calc(100vh-84px)] lg:flex-col lg:px-10 xl:py-14 2xl:px-16">
+      <section id="mobileCheckoutSummary" class="mb-4 rounded-2xl border border-brand-soft bg-brand-panel p-4 shadow-sm lg:hidden" aria-labelledby="mobile-summary-title">
+        <h2 id="mobile-summary-title" class="sr-only">Resumen de compra movil</h2>
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-xs uppercase tracking-wide text-brand-muted">Resumen</p>
+            <p id="mobileCheckoutItems" class="text-sm font-semibold text-brand-ink">0 items</p>
           </div>
-        </section>
-
-        <section class="rounded-2xl bg-white p-6 shadow" aria-labelledby="paso2">
-          <h2 id="paso2" class="font-display text-2xl text-slate-900">Paso 2: Direccion de entrega</h2>
-          <div class="mt-4 grid gap-4 sm:grid-cols-2">
-            <div class="sm:col-span-2">
-              <label for="direccion" class="mb-1 block text-sm font-semibold">Direccion</label>
-              <input id="direccion" type="text" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
-            <div>
-              <label for="ciudad" class="mb-1 block text-sm font-semibold">Ciudad</label>
-              <input id="ciudad" type="text" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
-            <div>
-              <label for="cp" class="mb-1 block text-sm font-semibold">Codigo postal</label>
-              <input id="cp" type="text" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
-            <div class="sm:col-span-2">
-              <label for="pais" class="mb-1 block text-sm font-semibold">Pais</label>
-              <input id="pais" type="text" value="Francia" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
-            </div>
+          <div class="text-right">
+            <p class="text-xs uppercase tracking-wide text-brand-muted">Total</p>
+            <p id="mobileCheckoutTotal" class="text-base font-bold text-brand-sky">EUR 0.00</p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="rounded-2xl bg-white p-6 shadow" aria-labelledby="paso3">
-          <h2 id="paso3" class="font-display text-2xl text-slate-900">Paso 3: Pago con tarjeta</h2>
-          <div class="mt-4 grid gap-4 sm:grid-cols-2">
-            <div class="sm:col-span-2">
-              <label for="tarjeta" class="mb-1 block text-sm font-semibold">Numero de tarjeta</label>
-              <input id="tarjeta" type="text" placeholder="1234 5678 9012 3456" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
+      <section class="grid gap-6 lg:flex-1 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-8 2xl:gap-10" aria-labelledby="checkout-title">
+        <div class="rounded-3xl border border-brand-soft/80 bg-brand-carbon/75 p-4 shadow-[0_20px_80px_-40px_rgba(15,23,42,0.95)] backdrop-blur sm:p-6 xl:p-8">
+          <header class="space-y-2">
+            <p class="inline-flex rounded-full border border-brand-soft bg-brand-panel/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-muted">
+              Checkout seguro
+            </p>
+            <h1 id="checkout-title" class="font-display text-3xl leading-tight text-brand-ink sm:text-4xl xl:text-5xl">
+              Finaliza tu compra en 3 pasos
+            </h1>
+            <p class="max-w-2xl text-sm leading-6 text-brand-muted sm:text-base">
+              Rellena los campos solicitados en cada paso para confirmar tu compra.
+            </p>
+          </header>
+
+          <section class="mt-6" aria-label="Progreso del checkout">
+            <div class="mb-4 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.14em] text-brand-muted sm:text-sm">
+              <span id="currentStepText">Paso 1 de 3</span>
+              <span id="progressPercent" aria-live="polite">33%</span>
             </div>
-            <div>
-              <label for="vencimiento" class="mb-1 block text-sm font-semibold">Vencimiento</label>
-              <input id="vencimiento" type="text" placeholder="MM/AA" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
+            <div class="h-2 w-full overflow-hidden rounded-full bg-brand-soft">
+              <div
+                id="progressBar"
+                class="animate-progress-line h-2 rounded-full bg-gradient-to-r from-brand-sky to-brand-sky-strong transition-all duration-500"
+                style="width: 33%"
+                aria-hidden="true"
+              ></div>
             </div>
-            <div>
-              <label for="cvv" class="mb-1 block text-sm font-semibold">CVV</label>
-              <input id="cvv" type="text" placeholder="123" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" required>
+
+            <ol class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3" id="stepper">
+              <li>
+                <button
+                  type="button"
+                  class="step-trigger flex w-full items-center gap-3 rounded-2xl border border-brand-sky/70 bg-brand-panel px-3 py-3 text-left transition"
+                  data-step="1"
+                  aria-current="step"
+                  aria-label="Ir al paso 1 datos personales"
+                >
+                  <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-sky text-sm font-bold text-brand-night">1</span>
+                  <span class="text-sm font-semibold text-brand-ink">Datos personales</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="step-trigger flex w-full items-center gap-3 rounded-2xl border border-brand-soft bg-brand-panel/60 px-3 py-3 text-left transition"
+                  data-step="2"
+                  aria-label="Ir al paso 2 direccion de entrega"
+                >
+                  <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-soft text-sm font-bold text-brand-muted">2</span>
+                  <span class="text-sm font-semibold text-brand-muted">Direccion de entrega</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="step-trigger flex w-full items-center gap-3 rounded-2xl border border-brand-soft bg-brand-panel/60 px-3 py-3 text-left transition"
+                  data-step="3"
+                  aria-label="Ir al paso 3 pago con tarjeta"
+                >
+                  <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-soft text-sm font-bold text-brand-muted">3</span>
+                  <span class="text-sm font-semibold text-brand-muted">Pago con tarjeta</span>
+                </button>
+              </li>
+            </ol>
+          </section>
+
+          <section class="relative mt-7">
+            <h2 class="sr-only">Formulario de checkout</h2>
+            <div
+              id="stepLoader"
+              class="pointer-events-none absolute inset-0 z-20 hidden items-center justify-center rounded-3xl bg-brand-ink/20 backdrop-blur-sm"
+              aria-hidden="true"
+            >
+              <div class="flex items-center gap-3 rounded-2xl border border-brand-soft bg-brand-carbon/90 px-4 py-3 shadow-lg">
+                <span class="h-5 w-5 animate-spin rounded-full border-2 border-brand-soft border-t-brand-sky" aria-hidden="true"></span>
+                <span class="text-sm font-medium text-brand-ink">Cargando paso...</span>
+              </div>
             </div>
+
+            <form id="checkoutForm" class="relative" novalidate>
+              <!-- Paso 1 -->
+              <section data-panel="1" class="panel animate-fade-slide space-y-5" aria-labelledby="paso1-title">
+                <h2 id="paso1-title" class="text-lg font-semibold text-brand-ink sm:text-xl">1. Datos personales</h2>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="sm:col-span-2">
+                    <label for="fullName" class="mb-1.5 block text-sm font-medium text-brand-ink">Nombre completo</label>
+                    <input
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      autocomplete="name"
+                      required
+                      aria-describedby="fullNameError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="Ej: Ana Lucia Gomez">
+                    <p id="fullNameError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="email" class="mb-1.5 block text-sm font-medium text-brand-ink">Email</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autocomplete="email"
+                      required
+                      aria-describedby="emailError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="tuemail@dominio.com">
+                    <p id="emailError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="phone" class="mb-1.5 block text-sm font-medium text-brand-ink">Telefono</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      required
+                      aria-describedby="phoneError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="+34 600 123 456">
+                    <p id="phoneError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label for="birthDate" class="mb-1.5 block text-sm font-medium text-brand-ink">Fecha de nacimiento</label>
+                    <div id="birthDateWrapper" class="group relative">
+                      <input
+                        id="birthDate"
+                        name="birthDate"
+                        type="date"
+                        required
+                        aria-describedby="birthDateError"
+                        class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 [color-scheme:light] focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35">
+                    </div>
+                    <p id="birthDateError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Paso 2 -->
+              <section data-panel="2" class="panel hidden space-y-5" aria-labelledby="paso2-title">
+                <h2 id="paso2-title" class="text-lg font-semibold text-brand-ink sm:text-xl">2. Direccion de entrega</h2>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  <div>
+                    <label for="country" class="mb-1.5 block text-sm font-medium text-brand-ink">Pais</label>
+                    <input
+                      id="country"
+                      name="country"
+                      type="text"
+                      autocomplete="country-name"
+                      required
+                      aria-describedby="countryError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="Espana">
+                    <p id="countryError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="state" class="mb-1.5 block text-sm font-medium text-brand-ink">Departamento / Estado</label>
+                    <input
+                      id="state"
+                      name="state"
+                      type="text"
+                      autocomplete="address-level1"
+                      required
+                      aria-describedby="stateError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="Madrid">
+                    <p id="stateError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="city" class="mb-1.5 block text-sm font-medium text-brand-ink">Ciudad</label>
+                    <input
+                      id="city"
+                      name="city"
+                      type="text"
+                      autocomplete="address-level2"
+                      required
+                      aria-describedby="cityError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="Madrid">
+                    <p id="cityError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div class="sm:col-span-2 xl:col-span-2">
+                    <label for="street" class="mb-1.5 block text-sm font-medium text-brand-ink">Calle</label>
+                    <input
+                      id="street"
+                      name="street"
+                      type="text"
+                      autocomplete="address-line1"
+                      required
+                      aria-describedby="streetError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="Gran Via">
+                    <p id="streetError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="doorNumber" class="mb-1.5 block text-sm font-medium text-brand-ink">Numero de puerta</label>
+                    <input
+                      id="doorNumber"
+                      name="doorNumber"
+                      type="text"
+                      required
+                      aria-describedby="doorNumberError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="18B">
+                    <p id="doorNumberError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="postalCode" class="mb-1.5 block text-sm font-medium text-brand-ink">Codigo postal</label>
+                    <input
+                      id="postalCode"
+                      name="postalCode"
+                      type="text"
+                      inputmode="numeric"
+                      autocomplete="postal-code"
+                      required
+                      aria-describedby="postalCodeError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="28013">
+                    <p id="postalCodeError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Paso 3 -->
+              <section data-panel="3" class="panel hidden space-y-5" aria-labelledby="paso3-title">
+                <h2 id="paso3-title" class="text-lg font-semibold text-brand-ink sm:text-xl">3. Pago con tarjeta</h2>
+                <div class="rounded-2xl border border-brand-soft bg-brand-panel/50 p-4">
+                  <p class="text-xs uppercase tracking-[0.16em] text-brand-muted">Pago protegido</p>
+                  <p class="mt-1 text-sm text-brand-ink">Transaccion encriptada con estandares de seguridad PCI DSS.</p>
+                </div>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="sm:col-span-2">
+                    <label for="cardName" class="mb-1.5 block text-sm font-medium text-brand-ink">Nombre del titular</label>
+                    <input
+                      id="cardName"
+                      name="cardName"
+                      type="text"
+                      autocomplete="cc-name"
+                      required
+                      aria-describedby="cardNameError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="Como aparece en la tarjeta">
+                    <p id="cardNameError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label for="cardNumber" class="mb-1.5 block text-sm font-medium text-brand-ink">Numero de tarjeta</label>
+                    <input
+                      id="cardNumber"
+                      name="cardNumber"
+                      type="text"
+                      inputmode="numeric"
+                      autocomplete="cc-number"
+                      maxlength="23"
+                      required
+                      aria-describedby="cardNumberError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="1234 5678 9012 3456">
+                    <div class="mt-1 flex items-center justify-between gap-3">
+                      <p id="cardNumberError" class="text-xs text-brand-error" aria-live="polite"></p>
+                      <p id="cardMaskPreview" class="text-xs text-brand-muted">**** **** **** ****</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="cardExpiry" class="mb-1.5 block text-sm font-medium text-brand-ink">Fecha de vencimiento</label>
+                    <input
+                      id="cardExpiry"
+                      name="cardExpiry"
+                      type="text"
+                      inputmode="numeric"
+                      autocomplete="cc-exp"
+                      maxlength="5"
+                      required
+                      aria-describedby="cardExpiryError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="MM/AA">
+                    <p id="cardExpiryError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+
+                  <div>
+                    <label for="cardCvv" class="mb-1.5 block text-sm font-medium text-brand-ink">CVV</label>
+                    <input
+                      id="cardCvv"
+                      name="cardCvv"
+                      type="password"
+                      inputmode="numeric"
+                      autocomplete="off"
+                      maxlength="4"
+                      required
+                      aria-describedby="cardCvvError"
+                      class="field w-full rounded-2xl border border-brand-soft bg-brand-panel/70 px-4 py-3 text-sm text-brand-ink outline-none transition duration-300 placeholder:text-brand-muted focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/35"
+                      placeholder="123">
+                    <p id="cardCvvError" class="mt-1 text-xs text-brand-error" aria-live="polite"></p>
+                  </div>
+                </div>
+              </section>
+
+              <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
+                <button
+                  id="backBtn"
+                  type="button"
+                  class="inline-flex min-h-11 items-center justify-center rounded-2xl border border-brand-soft bg-brand-panel px-5 py-2.5 text-sm font-semibold text-brand-ink transition hover:border-brand-sky hover:text-brand-sky disabled:cursor-not-allowed disabled:opacity-45"
+                  disabled
+                >
+                  Volver
+                </button>
+                <button
+                  id="nextBtn"
+                  type="button"
+                  class="inline-flex min-h-11 items-center justify-center rounded-2xl bg-brand-sky px-6 py-2.5 text-sm font-bold text-brand-night transition hover:bg-brand-sky-strong"
+                >
+                  Siguiente
+                </button>
+                <button
+                  id="submitBtn"
+                  type="submit"
+                  class="hidden inline-flex min-h-11 items-center justify-center rounded-2xl bg-brand-sky px-6 py-2.5 text-sm font-bold text-brand-night transition hover:bg-brand-sky-strong"
+                >
+                  Confirmar pago
+                </button>
+              </div>
+
+              <p id="formMessage" class="mt-3 text-sm text-brand-muted" aria-live="polite"></p>
+            </form>
+
+            <section id="confirmationPanel" class="hidden animate-fade-slide rounded-3xl border border-brand-ok/35 bg-brand-panel/65 p-6 text-center">
+              <div class="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full bg-brand-ok/15 text-2xl text-brand-ok" aria-hidden="true">✓</div>
+              <h2 class="mt-4 text-2xl font-semibold text-brand-ink">Pago confirmado</h2>
+              <p class="mt-2 text-sm leading-6 text-brand-muted sm:text-base">
+                Tu pedido fue procesado correctamente. Te enviamos un email con los detalles y el seguimiento de envio.
+              </p>
+              <a
+                href="catalogo.html"
+                class="mt-6 inline-flex min-h-11 items-center justify-center rounded-2xl bg-brand-sky px-6 py-2.5 text-sm font-bold text-brand-night transition hover:bg-brand-sky-strong"
+              >
+                Seguir comprando
+              </a>
+            </section>
+          </section>
+        </div>
+
+        <aside class="order-first rounded-3xl border border-brand-soft/80 bg-brand-carbon/75 p-4 shadow-[0_20px_80px_-50px_rgba(15,23,42,0.95)] backdrop-blur sm:p-6 xl:p-8 lg:order-none lg:h-fit lg:self-start lg:sticky lg:top-24" aria-labelledby="checkout-summary-title">
+          <h2 id="checkout-summary-title" class="text-xl font-semibold text-brand-ink">Resumen de compra</h2>
+          <p class="mt-1 text-sm text-brand-muted">Sincronizado automaticamente con tu carrito.</p>
+
+          <div id="checkoutCartList" class="mt-5 space-y-3"></div>
+
+          <section id="checkoutCartEmpty" class="hidden rounded-2xl border border-dashed border-brand-soft bg-brand-panel/50 p-5 text-center">
+            <h3 class="sr-only">Estado de carrito vacio</h3>
+            <p class="text-sm font-medium text-brand-ink">Tu carrito esta vacio.</p>
+            <a href="catalogo.html" class="mt-3 inline-flex min-h-10 items-center justify-center rounded-full bg-brand-ink px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-sky">
+              Ir al catalogo
+            </a>
+          </section>
+
+          <dl class="mt-6 space-y-2 text-sm">
+            <div class="flex items-center justify-between text-brand-muted">
+              <dt>Subtotal</dt>
+              <dd id="checkoutSubtotal">EUR 0.00</dd>
+            </div>
+            <div class="flex items-center justify-between text-brand-muted">
+              <dt>Envio</dt>
+              <dd id="checkoutShipping">EUR 0.00</dd>
+            </div>
+            <div class="flex items-center justify-between border-t border-brand-soft pt-3 text-base font-semibold text-brand-ink">
+              <dt>Total</dt>
+              <dd id="checkoutTotal">EUR 0.00</dd>
+            </div>
+          </dl>
+
+          <div class="mt-6 rounded-2xl border border-brand-soft bg-brand-panel/45 p-4">
+            <p class="text-xs uppercase tracking-[0.14em] text-brand-muted">Beneficios</p>
+            <ul class="mt-2 space-y-1 text-sm text-brand-ink">
+              <li>Entrega entre 24 y 48 horas</li>
+              <li>Cambios gratis por 30 dias</li>
+              <li>Atencion premium 24/7</li>
+            </ul>
           </div>
-          <button type="submit" class="mt-6 w-full rounded-full bg-brand-ink px-6 py-3 text-sm font-bold text-white hover:bg-brand-wine">
-            Confirmar pago
-          </button>
-        </section>
-      </form>
+        </aside>
+      </section>
     </main>
 
-    <footer class="border-t border-slate-200 bg-white">
-      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Categorias</h2>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Calzado</a></li>
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Camisas</a></li>
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Pantalones</a></li>
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Accesorios</a></li>
+    <!-- Footer reutilizable -->
+    <footer class="mt-8 lg:mt-10 border-t border-slate-200 bg-white" aria-label="Pie de pagina">
+      <div class="mx-auto grid max-w-[1800px] gap-8 px-4 py-10 sm:px-6 md:grid-cols-3 lg:px-10 2xl:px-16">
+        <section aria-labelledby="footer-categorias-title">
+          <h2 id="footer-categorias-title" class="font-display text-xl text-slate-900">Categorias</h2>
+          <ul class="mt-3 space-y-2 text-sm text-brand-muted">
+            <li><a href="catalogo.html" class="transition hover:text-brand-sky">Calzado</a></li>
+            <li><a href="catalogo.html" class="transition hover:text-brand-sky">Camisas</a></li>
+            <li><a href="catalogo.html" class="transition hover:text-brand-sky">Pantalones</a></li>
+            <li><a href="catalogo.html" class="transition hover:text-brand-sky">Accesorios</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Legal</h2>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li><a href="#" class="hover:text-brand-wine">Terminos y condiciones</a></li>
-            <li><a href="#" class="hover:text-brand-wine">Politica de privacidad</a></li>
-            <li><a href="#" class="hover:text-brand-wine">Sobre la marca</a></li>
+        <section aria-labelledby="footer-legal-title">
+          <h2 id="footer-legal-title" class="font-display text-xl text-slate-900">Legal</h2>
+          <ul class="mt-3 space-y-2 text-sm text-brand-muted">
+            <li><a href="#" class="transition hover:text-brand-sky">Terminos y condiciones</a></li>
+            <li><a href="#" class="transition hover:text-brand-sky">Politica de privacidad</a></li>
+            <li><a href="#" class="transition hover:text-brand-sky">Sobre la marca</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Contacto</h2>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+        <section aria-labelledby="footer-contacto-title">
+          <h2 id="footer-contacto-title" class="font-display text-xl text-slate-900">Contacto</h2>
+          <ul class="mt-3 space-y-2 text-sm text-brand-muted">
             <li>Email: support@maison-elegance.fr</li>
             <li>Telefono: +33 1 22 33 44 55</li>
             <li>Paris, Francia</li>
@@ -174,5 +595,429 @@
         </section>
       </div>
     </footer>
+
+    <script>
+      const CART_KEY = "maisonCart";
+      const SHIPPING = 8;
+      const form = document.getElementById("checkoutForm");
+      const panels = Array.from(document.querySelectorAll(".panel"));
+      const stepButtons = Array.from(document.querySelectorAll(".step-trigger"));
+      const progressBar = document.getElementById("progressBar");
+      const progressPercent = document.getElementById("progressPercent");
+      const currentStepText = document.getElementById("currentStepText");
+      const backBtn = document.getElementById("backBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const submitBtn = document.getElementById("submitBtn");
+      const loader = document.getElementById("stepLoader");
+      const formMessage = document.getElementById("formMessage");
+      const confirmationPanel = document.getElementById("confirmationPanel");
+      const checkoutCartList = document.getElementById("checkoutCartList");
+      const checkoutCartEmpty = document.getElementById("checkoutCartEmpty");
+      const checkoutSubtotal = document.getElementById("checkoutSubtotal");
+      const checkoutShipping = document.getElementById("checkoutShipping");
+      const checkoutTotal = document.getElementById("checkoutTotal");
+      const mobileCheckoutItems = document.getElementById("mobileCheckoutItems");
+      const mobileCheckoutTotal = document.getElementById("mobileCheckoutTotal");
+
+      const eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" });
+
+      const fieldIdsByStep = {
+        1: ["fullName", "email", "phone", "birthDate"],
+        2: ["country", "state", "city", "street", "doorNumber", "postalCode"],
+        3: ["cardName", "cardNumber", "cardExpiry", "cardCvv"]
+      };
+
+      const validators = {
+        fullName: (value) => {
+          if (!value.trim()) return "Ingresa tu nombre completo.";
+          return value.trim().length >= 6 ? "" : "El nombre debe tener al menos 6 caracteres.";
+        },
+        email: (value) => {
+          if (!value.trim()) return "El email es obligatorio.";
+          return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) ? "" : "Ingresa un email valido.";
+        },
+        phone: (value) => {
+          if (!value.trim()) return "El telefono es obligatorio.";
+          const digits = value.replace(/\D/g, "");
+          return digits.length >= 8 && digits.length <= 15 ? "" : "Ingresa un telefono valido (8-15 digitos).";
+        },
+        birthDate: (value) => {
+          if (!value) return "Selecciona tu fecha de nacimiento.";
+          const birth = new Date(value + "T00:00:00");
+          const today = new Date();
+          let age = today.getFullYear() - birth.getFullYear();
+          const monthDiff = today.getMonth() - birth.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) age -= 1;
+          return age >= 18 ? "" : "Debes ser mayor de 18 anos para comprar.";
+        },
+        country: requiredText("El pais es obligatorio."),
+        state: requiredText("El departamento o estado es obligatorio."),
+        city: requiredText("La ciudad es obligatoria."),
+        street: requiredText("La calle es obligatoria."),
+        doorNumber: requiredText("El numero de puerta es obligatorio."),
+        postalCode: (value) => {
+          if (!value.trim()) return "El codigo postal es obligatorio.";
+          return /^[A-Za-z0-9\-\s]{3,10}$/.test(value) ? "" : "Codigo postal invalido.";
+        },
+        cardName: requiredText("Ingresa el nombre del titular."),
+        cardNumber: (value) => {
+          const raw = value.replace(/\s/g, "");
+          if (!raw) return "Ingresa el numero de tarjeta.";
+          if (raw.length < 13 || raw.length > 19) return "La tarjeta debe tener entre 13 y 19 digitos.";
+          return luhnCheck(raw) ? "" : "Numero de tarjeta invalido.";
+        },
+        cardExpiry: (value) => {
+          if (!value.trim()) return "Ingresa la fecha de vencimiento.";
+          if (!/^(0[1-9]|1[0-2])\/(\d{2})$/.test(value)) return "Usa el formato MM/AA.";
+          const [month, year] = value.split("/").map(Number);
+          const current = new Date();
+          const currentMonth = current.getMonth() + 1;
+          const currentYear = current.getFullYear() % 100;
+          if (year < currentYear || (year === currentYear && month < currentMonth)) {
+            return "La tarjeta esta vencida.";
+          }
+          return "";
+        },
+        cardCvv: (value) => {
+          if (!value.trim()) return "Ingresa el CVV.";
+          return /^\d{3,4}$/.test(value) ? "" : "El CVV debe tener 3 o 4 digitos.";
+        }
+      };
+
+      function requiredText(message) {
+        return (value) => (value.trim() ? "" : message);
+      }
+
+      function luhnCheck(number) {
+        let sum = 0;
+        let shouldDouble = false;
+        for (let i = number.length - 1; i >= 0; i -= 1) {
+          let digit = Number(number[i]);
+          if (shouldDouble) {
+            digit *= 2;
+            if (digit > 9) digit -= 9;
+          }
+          sum += digit;
+          shouldDouble = !shouldDouble;
+        }
+        return sum % 10 === 0;
+      }
+
+      function getErrorElement(fieldId) {
+        return document.getElementById(`${fieldId}Error`);
+      }
+
+      function loadCart() {
+        try {
+          const raw = localStorage.getItem(CART_KEY);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) return [];
+          return parsed.filter((item) => item && item.id && item.name && Number(item.price) > 0 && Number(item.quantity) > 0);
+        } catch {
+          return [];
+        }
+      }
+
+      function cartTotals(cart) {
+        const items = cart.reduce((acc, item) => acc + item.quantity, 0);
+        const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        const shipping = cart.length ? SHIPPING : 0;
+        const total = subtotal + shipping;
+        return { items, subtotal, shipping, total };
+      }
+
+      function renderCheckoutCartItem(item) {
+        const subtotal = item.price * item.quantity;
+        return `
+          <article class="rounded-2xl border border-brand-soft bg-brand-panel/55 p-3">
+            <div class="flex items-start gap-3">
+              <img src="${item.image}" alt="${item.name}" class="h-14 w-14 rounded-lg object-cover" loading="lazy">
+              <div class="min-w-0 flex-1">
+                <h3 class="truncate text-sm font-semibold text-brand-ink">${item.name}</h3>
+                <p class="text-xs text-brand-muted">${item.quantity} x ${eur.format(item.price)}</p>
+              </div>
+              <p class="text-sm font-semibold text-brand-ink">${eur.format(subtotal)}</p>
+            </div>
+          </article>
+        `;
+      }
+
+      function updateCheckoutSummary() {
+        const cart = loadCart();
+        const totals = cartTotals(cart);
+
+        if (!cart.length) {
+          checkoutCartList.innerHTML = "";
+          checkoutCartEmpty.classList.remove("hidden");
+          mobileCheckoutItems.textContent = "0 items";
+          mobileCheckoutTotal.textContent = eur.format(0);
+          checkoutSubtotal.textContent = eur.format(0);
+          checkoutShipping.textContent = eur.format(0);
+          checkoutTotal.textContent = eur.format(0);
+          nextBtn.disabled = true;
+          submitBtn.disabled = true;
+          nextBtn.classList.add("opacity-50", "pointer-events-none");
+          submitBtn.classList.add("opacity-50", "pointer-events-none");
+          formMessage.textContent = "Tu carrito esta vacio. Agrega productos para continuar con el checkout.";
+          formMessage.className = "mt-3 text-sm text-brand-error";
+          return false;
+        }
+
+        checkoutCartEmpty.classList.add("hidden");
+        checkoutCartList.innerHTML = cart.map((item) => renderCheckoutCartItem(item)).join("");
+        mobileCheckoutItems.textContent = `${totals.items} ${totals.items === 1 ? "item" : "items"}`;
+        mobileCheckoutTotal.textContent = eur.format(totals.total);
+        checkoutSubtotal.textContent = eur.format(totals.subtotal);
+        checkoutShipping.textContent = eur.format(totals.shipping);
+        checkoutTotal.textContent = eur.format(totals.total);
+
+        nextBtn.disabled = false;
+        submitBtn.disabled = false;
+        nextBtn.classList.remove("opacity-50", "pointer-events-none");
+        submitBtn.classList.remove("opacity-50", "pointer-events-none");
+        if (formMessage.textContent.includes("carrito esta vacio")) {
+          formMessage.textContent = "";
+          formMessage.className = "mt-3 text-sm text-brand-muted";
+        }
+
+        return true;
+      }
+
+      function setFieldState(input, isValid, message) {
+        const errorElement = getErrorElement(input.id);
+        input.classList.remove("border-brand-error", "border-brand-ok", "ring-brand-error/30", "ring-brand-ok/30", "ring-2");
+
+        if (message) {
+          input.classList.add("border-brand-error", "ring-2", "ring-brand-error/30");
+          if (errorElement) errorElement.textContent = message;
+          return false;
+        }
+
+        if (input.value.trim()) {
+          input.classList.add("border-brand-ok", "ring-2", "ring-brand-ok/30");
+        }
+
+        if (errorElement) errorElement.textContent = "";
+        return isValid;
+      }
+
+      function validateField(input) {
+        const validator = validators[input.id];
+        if (!validator) return true;
+        const message = validator(input.value);
+        return setFieldState(input, !message, message);
+      }
+
+      function validateStep(step) {
+        const fields = fieldIdsByStep[step].map((id) => document.getElementById(id));
+        const results = fields.map((field) => validateField(field));
+        return results.every(Boolean);
+      }
+
+      function updateStepper(activeStep) {
+        const width = Math.round((activeStep / 3) * 100);
+        progressBar.style.width = `${width}%`;
+        progressBar.classList.remove("animate-progress-line");
+        requestAnimationFrame(() => progressBar.classList.add("animate-progress-line"));
+        progressPercent.textContent = `${width}%`;
+        currentStepText.textContent = `Paso ${activeStep} de 3`;
+
+        stepButtons.forEach((btn) => {
+          const step = Number(btn.dataset.step);
+          const bullet = btn.querySelector("span");
+          const text = btn.querySelector("span:last-child");
+          btn.classList.remove("border-brand-sky/70", "bg-brand-panel", "border-brand-soft", "bg-brand-panel/60");
+          bullet.classList.remove("bg-brand-sky", "text-brand-night", "bg-brand-soft", "text-brand-muted", "bg-brand-ok/30", "text-brand-ok");
+          text.classList.remove("text-brand-ink", "text-brand-muted", "text-brand-ok");
+          btn.removeAttribute("aria-current");
+
+          if (step === activeStep) {
+            btn.classList.add("border-brand-sky/70", "bg-brand-panel");
+            bullet.classList.add("bg-brand-sky", "text-brand-night");
+            text.classList.add("text-brand-ink");
+            btn.setAttribute("aria-current", "step");
+          } else if (step < activeStep) {
+            btn.classList.add("border-brand-ok/40", "bg-brand-panel/60");
+            bullet.classList.add("bg-brand-ok/30", "text-brand-ok");
+            text.classList.add("text-brand-ok");
+          } else {
+            btn.classList.add("border-brand-soft", "bg-brand-panel/60");
+            bullet.classList.add("bg-brand-soft", "text-brand-muted");
+            text.classList.add("text-brand-muted");
+          }
+        });
+      }
+
+      let currentStep = 1;
+
+      function showStep(nextStep) {
+        panels.forEach((panel) => {
+          const panelStep = Number(panel.dataset.panel);
+          if (panelStep === nextStep) {
+            panel.classList.remove("hidden");
+            panel.classList.add("animate-fade-slide");
+          } else {
+            panel.classList.add("hidden");
+            panel.classList.remove("animate-fade-slide");
+          }
+        });
+
+        currentStep = nextStep;
+        updateStepper(currentStep);
+
+        backBtn.disabled = currentStep === 1;
+        nextBtn.classList.toggle("hidden", currentStep === 3);
+        submitBtn.classList.toggle("hidden", currentStep !== 3);
+      }
+
+      function transitionToStep(nextStep) {
+        loader.classList.remove("hidden");
+        loader.classList.add("flex");
+
+        setTimeout(() => {
+          showStep(nextStep);
+          loader.classList.add("hidden");
+          loader.classList.remove("flex");
+        }, 260);
+      }
+
+      function clearFormMessage() {
+        formMessage.textContent = "";
+      }
+
+      document.querySelectorAll(".field").forEach((field) => {
+        field.addEventListener("input", () => {
+          validateField(field);
+          clearFormMessage();
+        });
+        field.addEventListener("blur", () => validateField(field));
+      });
+
+      // Click en toda el area de fecha para abrir calendario cuando sea compatible.
+      const birthDateInput = document.getElementById("birthDate");
+      document.getElementById("birthDateWrapper").addEventListener("click", () => {
+        birthDateInput.focus();
+        if (typeof birthDateInput.showPicker === "function") {
+          birthDateInput.showPicker();
+        }
+      });
+
+      const cardNumberInput = document.getElementById("cardNumber");
+      const cardMaskPreview = document.getElementById("cardMaskPreview");
+      cardNumberInput.addEventListener("input", () => {
+        const raw = cardNumberInput.value.replace(/\D/g, "").slice(0, 19);
+        cardNumberInput.value = raw.replace(/(.{4})/g, "$1 ").trim();
+        const visible = raw.slice(-4).padStart(4, "*");
+        cardMaskPreview.textContent = `**** **** **** ${visible}`;
+      });
+
+      const cardExpiryInput = document.getElementById("cardExpiry");
+      cardExpiryInput.addEventListener("input", () => {
+        const raw = cardExpiryInput.value.replace(/\D/g, "").slice(0, 4);
+        if (raw.length >= 3) {
+          cardExpiryInput.value = `${raw.slice(0, 2)}/${raw.slice(2)}`;
+        } else {
+          cardExpiryInput.value = raw;
+        }
+      });
+
+      const cardCvvInput = document.getElementById("cardCvv");
+      cardCvvInput.addEventListener("input", () => {
+        cardCvvInput.value = cardCvvInput.value.replace(/\D/g, "").slice(0, 4);
+      });
+
+      const phoneInput = document.getElementById("phone");
+      phoneInput.addEventListener("input", () => {
+        phoneInput.value = phoneInput.value.replace(/[^\d+\s()-]/g, "").slice(0, 20);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (!updateCheckoutSummary()) return;
+        clearFormMessage();
+        const isStepValid = validateStep(currentStep);
+        if (!isStepValid) {
+          formMessage.textContent = "Revisa los campos marcados antes de continuar.";
+          formMessage.className = "mt-3 text-sm text-brand-error";
+          return;
+        }
+        transitionToStep(Math.min(3, currentStep + 1));
+      });
+
+      backBtn.addEventListener("click", () => {
+        clearFormMessage();
+        transitionToStep(Math.max(1, currentStep - 1));
+      });
+
+      stepButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetStep = Number(btn.dataset.step);
+          if (targetStep === currentStep) return;
+          if (targetStep > currentStep) {
+            const canMove = validateStep(currentStep);
+            if (!canMove) {
+              formMessage.textContent = "Completa correctamente el paso actual para avanzar.";
+              formMessage.className = "mt-3 text-sm text-brand-error";
+              return;
+            }
+          }
+          clearFormMessage();
+          transitionToStep(targetStep);
+        });
+      });
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!updateCheckoutSummary()) return;
+        const allValid = [1, 2, 3].every((step) => validateStep(step));
+
+        if (!allValid) {
+          formMessage.textContent = "Hay errores pendientes. Corrigelos para confirmar el pago.";
+          formMessage.className = "mt-3 text-sm text-brand-error";
+          return;
+        }
+
+        loader.classList.remove("hidden");
+        loader.classList.add("flex");
+
+        setTimeout(() => {
+          loader.classList.add("hidden");
+          loader.classList.remove("flex");
+          localStorage.setItem(CART_KEY, JSON.stringify([]));
+          form.classList.add("hidden");
+          confirmationPanel.classList.remove("hidden");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 620);
+      });
+
+      window.addEventListener("storage", (event) => {
+        if (event.key === CART_KEY) updateCheckoutSummary();
+      });
+
+      window.addEventListener("cart:updated", updateCheckoutSummary);
+
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
+          mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+          mobileMenu.classList.toggle("hidden", isOpen);
+          mobileMenu.classList.toggle("flex", !isOpen);
+        });
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove("flex");
+          });
+        });
+      }
+
+      updateCheckoutSummary();
+      showStep(1);
+    </script>
   </body>
 </html>
