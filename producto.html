@@ -3,170 +3,638 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Producto | Blazer Montmartre - Maison Elegance</title>
+
+    <!-- SEO primario -->
+    <title>Blazer Montmartre | Maison Elegance</title>
     <meta
       name="description"
-      content="Detalle del producto Blazer Montmartre: talla, precio, selector de cantidad y descripcion de materiales y uso recomendado."
+      content="Blazer Montmartre de corte francés, mezcla de lino y lana. Tallas S–XL, 129 EUR. Entrega en 48-72 h con cambios gratuitos 30 días."
     />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://maison-elegance.fr/producto.html" />
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="Blazer Montmartre | Maison Elegance" />
+    <meta
+      property="og:description"
+      content="Blazer de corte francés con mezcla de lino y lana. Edición Atelier. 129 EUR."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
+    />
+    <meta property="og:url" content="https://maison-elegance.fr/producto.html" />
+    <meta property="og:locale" content="es_ES" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=768&q=70"
+      imagesrcset="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=768&q=70 768w, https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=70 1200w"
+      imagesizes="(min-width: 1024px) 50vw, 100vw"
+      fetchpriority="high"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Prata&display=swap"
       rel="stylesheet"
     />
+
     <style type="text/tailwindcss">
       @theme {
         --color-brand-ink: #0f172a;
         --color-brand-wine: #7f1d1d;
         --color-brand-cream: #fff8ef;
       }
-
       body {
         font-family: "Manrope", sans-serif;
       }
-
       .font-display {
         font-family: "Prata", serif;
       }
     </style>
+
+    <!-- Schema.org — Product (enriquecido) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "Blazer Montmartre",
         "sku": "ME-BLZ-0026",
-        "description": "Blazer de corte frances con mezcla de lino y lana.",
-        "brand": {"@type": "Brand", "name": "Maison Elegance"},
+        "description": "Blazer de corte francés con mezcla de lino y lana. Ideal para oficina creativa, cenas urbanas y eventos smart-casual.",
+        "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+        "color": "Crema",
+        "material": "65% lino, 35% lana ligera",
+        "brand": {
+          "@type": "Brand",
+          "name": "Maison Elegance"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "EUR",
           "price": "129.00",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "url": "https://maison-elegance.fr/producto.html",
+          "seller": {
+            "@type": "Organization",
+            "name": "Maison Elegance"
+          }
         }
       }
     </script>
+
+    <!-- Schema.org — BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://maison-elegance.fr/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Catálogo",
+            "item": "https://maison-elegance.fr/catalogo.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Blazer Montmartre"
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body class="bg-brand-cream text-brand-ink">
+
+    <!-- ===== NAVBAR ===== -->
     <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <a href="index.html" class="font-display text-2xl tracking-wide text-brand-wine">Maison Elegance</a>
-          <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">
+
+          <!-- Logo -->
+          <a href="index.html" aria-label="Maison Elegance — ir al inicio" class="font-display text-2xl tracking-wide text-brand-wine">
+            Maison Elegance
+          </a>
+
+          <button
+            id="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-mobile"
+            aria-label="Abrir menu principal"
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white p-2 text-slate-700 md:hidden"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <!-- Buscador -->
+          <form role="search" class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md" action="/buscar" method="get">
             <label for="buscar" class="sr-only">Buscar productos</label>
             <input
               id="buscar"
-              name="buscar"
+              name="q"
               type="search"
               placeholder="Buscar blazers, vestidos, accesorios..."
-              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine"
+              autocomplete="off"
+              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine focus:ring-2 focus:ring-brand-wine/30"
             />
           </form>
-          <nav aria-label="Cuenta" class="flex items-center gap-4 text-sm font-semibold">
-            <a href="checkout.html" class="hover:text-brand-wine">Mi cuenta</a>
-            <a href="carrito.html" class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine">Carrito</a>
+
+          <!-- Cuenta + Carrito -->
+          <nav aria-label="Cuenta de usuario" class="hidden items-center gap-3 text-sm font-semibold md:flex">
+            <a href="checkout.html" class="hover:text-brand-wine transition-colors">Mi cuenta</a>
+            <a
+              href="carrito.html"
+              aria-label="Ver carrito de compras"
+              class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine transition-colors"
+            >
+              Carrito
+            </a>
           </nav>
         </div>
-        <nav aria-label="Principal" class="mt-3 flex flex-wrap gap-5 text-sm font-semibold text-slate-700">
-          <a href="index.html" class="hover:text-brand-wine">Home</a>
-          <a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a>
-          <a href="producto.html" class="text-brand-wine">Vista de producto</a>
-          <a href="carrito.html" class="hover:text-brand-wine">Carrito</a>
-          <a href="checkout.html" class="hover:text-brand-wine">Checkout</a>
+
+        <!-- Navegación principal -->
+        <nav aria-label="Navegación principal" class="mt-3 hidden flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-slate-700 md:flex">
+          <a href="index.html" class="hover:text-brand-wine transition-colors">Home</a>
+          <a href="catalogo.html" class="hover:text-brand-wine transition-colors">Catálogo</a>
+          <a href="producto.html" aria-current="page" class="text-brand-wine">Vista de producto</a>
+          <a href="carrito.html" class="hover:text-brand-wine transition-colors">Carrito</a>
+          <a href="checkout.html" class="hover:text-brand-wine transition-colors">Checkout</a>
+        </nav>
+        <nav id="menu-mobile" aria-label="Menu movil" class="mt-3 hidden rounded-2xl border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow md:hidden">
+          <ul class="space-y-3">
+            <li><a href="index.html" class="hover:text-brand-wine transition-colors">Home</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine transition-colors">Catálogo</a></li>
+            <li><a href="producto.html" class="text-brand-wine">Vista de producto</a></li>
+            <li><a href="carrito.html" class="hover:text-brand-wine transition-colors">Carrito</a></li>
+            <li><a href="checkout.html" class="hover:text-brand-wine transition-colors">Checkout</a></li>
+            <li><a href="checkout.html" class="hover:text-brand-wine transition-colors">Mi cuenta</a></li>
+          </ul>
         </nav>
       </div>
     </header>
 
-    <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <section class="grid gap-8 lg:grid-cols-2">
-        <article class="rounded-3xl bg-white p-4 shadow">
-          <img
-            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80"
-            alt="Blazer Montmartre en color crema"
-            class="h-[520px] w-full rounded-2xl object-cover"
-          />
-        </article>
-        <article class="rounded-3xl bg-white p-6 shadow">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-wine">Edicion Atelier</p>
-          <h1 class="mt-2 font-display text-4xl text-slate-900">Blazer Montmartre</h1>
-          <p class="mt-2 text-sm text-slate-600">Codigo: ME-BLZ-0026</p>
-          <p class="mt-4 text-3xl font-bold text-slate-900">129.00 EUR</p>
+    <!-- ===== MAIN ===== -->
+    <main id="contenido-principal" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
 
-          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      <!-- Breadcrumb visible -->
+      <nav aria-label="Ruta de navegación" class="mb-6">
+        <ol class="flex flex-wrap items-center gap-1 text-xs text-slate-500" role="list">
+          <li><a href="index.html" class="hover:text-brand-wine transition-colors">Home</a></li>
+          <li aria-hidden="true" class="select-none">›</li>
+          <li><a href="catalogo.html" class="hover:text-brand-wine transition-colors">Catálogo</a></li>
+          <li aria-hidden="true" class="select-none">›</li>
+          <li aria-current="page" class="font-semibold text-brand-ink">Blazer Montmartre</li>
+        </ol>
+      </nav>
+
+      <!-- Sección principal: imagen + ficha -->
+      <section aria-labelledby="nombre-producto" class="grid gap-6 lg:grid-cols-2 lg:gap-10">
+
+        <!-- Columna imagen -->
+        <div class="rounded-3xl bg-white p-3 shadow sm:p-4">
+          <img
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=768&q=70"
+            srcset="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=480&q=70 480w, https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=768&q=70 768w, https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=70 1200w"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            alt="Blazer Montmartre en color crema, vista frontal"
+            class="w-full rounded-2xl object-cover aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5]"
+            width="1200"
+            height="1500"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Columna ficha de producto -->
+        <article class="rounded-3xl bg-white p-5 shadow sm:p-6 lg:p-8" aria-label="Información del producto">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-wine">Edición Atelier</p>
+          <h1 id="nombre-producto" class="mt-2 font-display text-3xl text-slate-900 sm:text-4xl">
+            Blazer Montmartre
+          </h1>
+          <p class="mt-1 text-sm text-slate-500">
+            <span class="sr-only">Código de referencia:</span>
+            <span aria-label="Código ME-BLZ-0026">Ref. ME-BLZ-0026</span>
+          </p>
+
+          <p class="mt-4 text-3xl font-bold text-slate-900" aria-label="Precio: 129 euros">
+            129,00 <abbr title="Euros">EUR</abbr>
+          </p>
+
+          <!-- Selectores -->
+          <div class="mt-6 grid grid-cols-2 gap-4">
             <div>
-              <label for="talla" class="mb-1 block text-sm font-semibold">Talla</label>
-              <select id="talla" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
-                <option>S</option>
-                <option selected>M</option>
-                <option>L</option>
-                <option>XL</option>
+              <label for="talla" class="mb-1 block text-sm font-semibold">
+                Talla
+              </label>
+              <select
+                id="talla"
+                name="talla"
+                class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:border-brand-wine focus:ring-2 focus:ring-brand-wine/30 outline-none"
+              >
+                <option value="S">S</option>
+                <option value="M" selected>M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
               </select>
             </div>
+
             <div>
-              <label for="cantidad" class="mb-1 block text-sm font-semibold">Cantidad</label>
-              <input id="cantidad" type="number" min="1" value="1" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" />
+              <label for="cantidad" class="mb-1 block text-sm font-semibold">
+                Cantidad
+              </label>
+              <!-- Wrapper con botones +/- accesibles -->
+              <div class="flex items-center rounded-xl border border-slate-300 overflow-hidden" role="group" aria-label="Selector de cantidad">
+                <button
+                  type="button" id="btn-menos" aria-label="Reducir cantidad"
+                  class="flex-shrink-0 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-colors text-lg leading-none select-none"
+                >
+                  −
+                </button>
+                <input
+                  id="cantidad"
+                  name="cantidad"
+                  type="number"
+                  min="1"
+                  max="99"
+                  value="1"
+                  aria-label="Cantidad de unidades"
+                  class="w-full min-w-0 border-0 text-center text-sm py-2 outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
+                <button
+                  type="button" id="btn-mas" aria-label="Aumentar cantidad"
+                  class="flex-shrink-0 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-colors text-lg leading-none select-none"
+                >
+                  +
+                </button>
+              </div>
             </div>
           </div>
 
-          <button class="mt-6 w-full rounded-full bg-brand-ink px-6 py-3 text-sm font-bold text-white hover:bg-brand-wine">
-            Agregar al carrito
+          <!-- CTA -->
+          <button
+            type="button"
+            class="mt-6 w-full rounded-full bg-brand-ink px-6 py-3 text-sm font-bold text-white hover:bg-brand-wine transition-colors focus:outline-none focus:ring-2 focus:ring-brand-wine focus:ring-offset-2"
+            aria-label="Añadir Blazer Montmartre al carrito"
+          >
+            Añadir al carrito
           </button>
+          <p id="productStatus" class="mt-3 hidden rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700" aria-live="polite"></p>
 
-          <ul class="mt-6 space-y-2 text-sm text-slate-700">
-            <li>Entrega estandar en 48-72 horas</li>
-            <li>Cambios gratuitos durante 30 dias</li>
-            <li>Pago seguro con cifrado SSL</li>
+          <!-- Beneficios -->
+          <ul class="mt-6 space-y-2 text-sm text-slate-600" aria-label="Información de entrega y garantías">
+            <li class="flex items-start gap-2">
+              <span aria-hidden="true" class="mt-0.5 text-brand-wine">✓</span>
+              Entrega estándar en 48–72 horas
+            </li>
+            <li class="flex items-start gap-2">
+              <span aria-hidden="true" class="mt-0.5 text-brand-wine">✓</span>
+              Cambios gratuitos durante 30 días
+            </li>
+            <li class="flex items-start gap-2">
+              <span aria-hidden="true" class="mt-0.5 text-brand-wine">✓</span>
+              Pago seguro con cifrado SSL
+            </li>
           </ul>
+
+          <!-- Más información (inspiración visual estilo Zara, adaptada al estilo del sitio) -->
+          <section aria-labelledby="titulo-mas-info" class="mt-8 border-t border-slate-200 pt-5">
+            <h2 id="titulo-mas-info" class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+              Más información del producto
+            </h2>
+
+            <div id="acordeon-mas-info" class="mt-4 divide-y divide-slate-200 border-y border-slate-200">
+              <details class="group" open>
+                <summary class="flex cursor-pointer list-none items-center justify-between px-1 py-3 text-sm font-semibold text-slate-900">
+                  Composición y cuidados
+                  <span class="text-brand-wine transition group-open:rotate-45">+</span>
+                </summary>
+                <div class="pb-4 pr-6 text-sm leading-7 text-slate-700">
+                  Exterior: 65% lino, 35% lana ligera. Forro interior transpirable. Lavar a mano en frío,
+                  no usar secadora y planchar a baja temperatura para conservar estructura y caída.
+                </div>
+              </details>
+
+              <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between px-1 py-3 text-sm font-semibold text-slate-900">
+                  Fit y guía de tallas
+                  <span class="text-brand-wine transition group-open:rotate-45">+</span>
+                </summary>
+                <div class="pb-4 pr-6 text-sm leading-7 text-slate-700">
+                  Corte recto de inspiración francesa con hombro suave. Si buscas un ajuste más relajado,
+                  elige una talla superior. La modelo mide 1,76 m y lleva talla M.
+                </div>
+              </details>
+
+              <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-between px-1 py-3 text-sm font-semibold text-slate-900">
+                  Envíos y devoluciones
+                  <span class="text-brand-wine transition group-open:rotate-45">+</span>
+                </summary>
+                <div class="pb-4 pr-6 text-sm leading-7 text-slate-700">
+                  Entrega estimada en 48–72 horas laborables. Cambios gratuitos durante 30 días y devolución
+                  disponible desde tu cuenta o en punto de recogida autorizado.
+                </div>
+              </details>
+            </div>
+          </section>
         </article>
       </section>
 
-      <section class="mt-10 rounded-3xl bg-white p-6 shadow">
-        <h2 class="font-display text-3xl text-slate-900">Descripcion detallada</h2>
-        <div class="mt-5 grid gap-6 md:grid-cols-2">
-          <article>
-            <h3 class="text-lg font-bold text-slate-900">Materiales</h3>
-            <p class="mt-2 leading-7 text-slate-700">
-              Mezcla premium de 65% lino y 35% lana ligera. Forro interior transpirable con acabado suave para uso prolongado.
-            </p>
-          </article>
-          <article>
-            <h3 class="text-lg font-bold text-slate-900">Uso recomendado</h3>
-            <p class="mt-2 leading-7 text-slate-700">
-              Ideal para oficina creativa, cenas urbanas y eventos smart-casual. Combina con pantalon sastre o denim recto para un look versatil.
-            </p>
+      <!-- Sección descripción detallada -->
+      <section
+        aria-labelledby="titulo-descripcion"
+        class="mt-8 rounded-3xl bg-white p-5 shadow sm:p-6 lg:p-8 [content-visibility:auto] [contain-intrinsic-size:1px_700px]"
+      >
+        <h2 id="titulo-descripcion" class="font-display text-2xl text-slate-900 sm:text-3xl">
+          Descripción detallada
+        </h2>
+
+        <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+          Diseñado para una elegancia contemporánea, el Blazer Montmartre equilibra estructura y
+          ligereza con una caída impecable. Una pieza pensada para elevar tu presencia con discreción,
+          desde jornadas creativas hasta noches urbanas con carácter.
+        </p>
+
+        <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Características destacadas del producto">
+          <li class="rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm font-semibold text-slate-800">Lino premium</li>
+          <li class="rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm font-semibold text-slate-800">Transpirable</li>
+          <li class="rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm font-semibold text-slate-800">Corte francés</li>
+          <li class="rounded-2xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm font-semibold text-slate-800">Smart casual</li>
+        </ul>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-3">
+          <div class="space-y-6 lg:col-span-2">
+            <!-- Materiales -->
+            <article aria-labelledby="titulo-materiales">
+            <h3 id="titulo-materiales" class="text-base font-bold text-slate-900 sm:text-lg">
+              Materiales
+            </h3>
+            <dl class="mt-3 space-y-2 text-sm leading-7 text-slate-700">
+              <div>
+                <dt class="font-semibold text-slate-800 inline">Tejido exterior:</dt>
+                <dd class="inline"> 65% lino, 35% lana ligera.</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-slate-800 inline">Forro interior:</dt>
+                <dd class="inline"> Transpirable con acabado suave para uso prolongado.</dd>
+              </div>
+            </dl>
+            </article>
+
+            <!-- Uso recomendado -->
+            <article aria-labelledby="titulo-uso">
+              <h3 id="titulo-uso" class="text-base font-bold text-slate-900 sm:text-lg">
+                Uso recomendado
+              </h3>
+              <p class="mt-3 text-sm leading-7 text-slate-700">
+                Ideal para <strong>oficina creativa</strong>, cenas urbanas y eventos
+                <em>smart-casual</em>. Combina con pantalón sastre o denim recto para
+                un look versátil en cualquier temporada.
+              </p>
+            </article>
+          </div>
+
+          <article aria-labelledby="titulo-ficha-tecnica" class="rounded-2xl border border-slate-200 bg-slate-50/50 p-4 sm:p-5">
+            <h3 id="titulo-ficha-tecnica" class="text-base font-bold text-slate-900">
+              Ficha técnica
+            </h3>
+
+            <table class="mt-3 w-full border-separate border-spacing-y-2 text-left text-sm" aria-label="Ficha técnica del blazer Montmartre">
+              <tbody>
+                <tr>
+                  <th scope="row" class="w-1/3 align-top font-semibold text-slate-800">Composición</th>
+                  <td class="text-slate-700">65% lino, 35% lana ligera</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="w-1/3 align-top font-semibold text-slate-800">Fit</th>
+                  <td class="text-slate-700">Regular estructurado</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="w-1/3 align-top font-semibold text-slate-800">Origen</th>
+                  <td class="text-slate-700">Diseñado en París</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="w-1/3 align-top font-semibold text-slate-800">Temporada</th>
+                  <td class="text-slate-700">Primavera / Otoño</td>
+                </tr>
+              </tbody>
+            </table>
           </article>
         </div>
       </section>
+
+      <section aria-labelledby="titulo-relacionados" class="mt-8 [content-visibility:auto] [contain-intrinsic-size:1px_540px]">
+        <div class="mb-5 flex items-end justify-between gap-4">
+          <h2 id="titulo-relacionados" class="font-display text-2xl text-slate-900 sm:text-3xl">
+            También te puede interesar
+          </h2>
+          <a href="catalogo.html" class="text-sm font-semibold text-brand-wine hover:text-brand-ink transition-colors">
+            Ver catálogo
+          </a>
+        </div>
+
+        <div class="mb-3 flex items-center justify-end gap-2 sm:hidden" aria-label="Controles de carrusel de productos relacionados">
+          <button
+            type="button"
+            id="rel-prev"
+            aria-label="Mostrar productos anteriores"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition-colors hover:border-brand-wine hover:text-brand-wine focus:outline-none focus:ring-2 focus:ring-brand-wine/30"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            id="rel-next"
+            aria-label="Mostrar siguientes productos"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 shadow-sm transition-colors hover:border-brand-wine hover:text-brand-wine focus:outline-none focus:ring-2 focus:ring-brand-wine/30"
+          >
+            →
+          </button>
+        </div>
+
+        <div id="relacionados-carrusel" class="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:pb-0 lg:grid-cols-3" role="list" aria-label="Productos relacionados" tabindex="0">
+          <article role="listitem" class="min-w-[78%] snap-start rounded-3xl bg-white p-3 shadow transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md sm:min-w-0">
+            <a href="producto.html" class="block" aria-label="Ver Trench Rivoli">
+              <img
+                src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=760&q=70"
+                alt="Trench Rivoli en tono beige"
+                class="aspect-[4/5] w-full rounded-2xl object-cover"
+                loading="lazy"
+                decoding="async"
+                width="760"
+                height="950"
+              />
+              <div class="px-1 pb-1 pt-3">
+                <h3 class="text-sm font-semibold text-slate-900">Trench Rivoli</h3>
+                <p class="mt-1 text-sm text-slate-600">149,00 EUR</p>
+              </div>
+            </a>
+          </article>
+
+          <article role="listitem" class="min-w-[78%] snap-start rounded-3xl bg-white p-3 shadow transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md sm:min-w-0">
+            <a href="producto.html" class="block" aria-label="Ver Pantalón Louvre">
+              <img
+                src="https://f.fcdn.app/imgs/c4fe2c/avriltendencias.com.uy/avriuy/0e00/original/catalogo/JCAMILO_JCAMILO_1/460x690/jean-camilo-jean-camilo.jpg"
+                alt="Pantalón Louvre en color marfil"
+                class="aspect-[4/5] w-full rounded-2xl object-cover"
+                loading="lazy"
+                decoding="async"
+                width="760"
+                height="950"
+              />
+              <div class="px-1 pb-1 pt-3">
+                <h3 class="text-sm font-semibold text-slate-900">Pantalón Louvre</h3>
+                <p class="mt-1 text-sm text-slate-600">89,00 EUR</p>
+              </div>
+            </a>
+          </article>
+
+          <article role="listitem" class="min-w-[78%] snap-start rounded-3xl bg-white p-3 shadow transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md sm:col-span-2 sm:min-w-0 lg:col-span-1">
+            <a href="producto.html" class="block" aria-label="Ver Camisa Marais">
+              <img
+                src="https://rapsodia-co.grupo-alas.com.ar/media/catalog/product/1/0/103196_rapsodia_11115126095i_04_2.webp"
+                alt="Camisa Marais blanca de cuello clásico"
+                class="aspect-[4/5] w-full rounded-2xl object-cover"
+                loading="lazy"
+                decoding="async"
+                width="760"
+                height="950"
+              />
+              <div class="px-1 pb-1 pt-3">
+                <h3 class="text-sm font-semibold text-slate-900">Camisa Marais</h3>
+                <p class="mt-1 text-sm text-slate-600">79,00 EUR</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
     </main>
 
-    <footer class="border-t border-slate-200 bg-white">
-      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Categorias</h2>
+    <!-- ===== FOOTER ===== -->
+    <footer class="mt-10 border-t border-slate-200 bg-white [content-visibility:auto] [contain-intrinsic-size:1px_320px]" aria-label="Pie de página">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 sm:grid-cols-2 md:grid-cols-3 lg:px-8">
+
+        <section aria-labelledby="footer-categorias">
+          <h2 id="footer-categorias" class="font-display text-xl text-slate-900">Categorías</h2>
           <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Calzado</a></li>
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Camisas</a></li>
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Pantalones</a></li>
-            <li><a href="catalogo.html" class="hover:text-brand-wine">Accesorios</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine transition-colors">Calzado</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine transition-colors">Camisas</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine transition-colors">Pantalones</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine transition-colors">Accesorios</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Legal</h2>
+
+        <section aria-labelledby="footer-legal">
+          <h2 id="footer-legal" class="font-display text-xl text-slate-900">Legal</h2>
           <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li><a href="#" class="hover:text-brand-wine">Terminos y condiciones</a></li>
-            <li><a href="#" class="hover:text-brand-wine">Politica de privacidad</a></li>
-            <li><a href="#" class="hover:text-brand-wine">Sobre la marca</a></li>
+            <li><a href="#" class="hover:text-brand-wine transition-colors">Términos y condiciones</a></li>
+            <li><a href="#" class="hover:text-brand-wine transition-colors">Política de privacidad</a></li>
+            <li><a href="#" class="hover:text-brand-wine transition-colors">Sobre la marca</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Contacto</h2>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li>Email: support@maison-elegance.fr</li>
-            <li>Telefono: +33 1 22 33 44 55</li>
-            <li>Paris, Francia</li>
-          </ul>
+
+        <section aria-labelledby="footer-contacto" class="sm:col-span-2 md:col-span-1">
+          <h2 id="footer-contacto" class="font-display text-xl text-slate-900">Contacto</h2>
+          <address class="mt-3 space-y-2 text-sm text-slate-700 not-italic">
+            <p>
+              <a href="mailto:support@maison-elegance.fr" class="hover:text-brand-wine transition-colors">
+                support@maison-elegance.fr
+              </a>
+            </p>
+            <p>
+              <a href="tel:+33122334455" class="hover:text-brand-wine transition-colors">
+                +33 1 22 33 44 55
+              </a>
+            </p>
+            <p>París, Francia</p>
+          </address>
         </section>
+
+      </div>
+
+      <div class="border-t border-slate-100 px-4 py-4 text-center text-xs text-slate-400">
+        © <time datetime="2025">2025</time> Maison Elegance. Todos los derechos reservados.
       </div>
     </footer>
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('menu-mobile');
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function () {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.add('hidden');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+    const cantidad = document.getElementById('cantidad');
+    
+    document.getElementById('btn-menos').addEventListener('click', function () {
+      if (cantidad.value > 1) cantidad.value = parseInt(cantidad.value) - 1;
+    });
+    document.getElementById('btn-mas').addEventListener('click', function () {
+      if (cantidad.value < 99) cantidad.value = parseInt(cantidad.value) + 1;
+    });
+
+    const relacionadosCarrusel = document.getElementById('relacionados-carrusel');
+    const prevRelacionado = document.getElementById('rel-prev');
+    const nextRelacionado = document.getElementById('rel-next');
+    const acordeonMasInfo = document.getElementById('acordeon-mas-info');
+
+    if (relacionadosCarrusel && prevRelacionado && nextRelacionado) {
+      const pasoScroll = () => Math.max(220, Math.floor(relacionadosCarrusel.clientWidth * 0.86));
+
+      prevRelacionado.addEventListener('click', function () {
+        relacionadosCarrusel.scrollBy({ left: -pasoScroll(), behavior: 'smooth' });
+      });
+
+      nextRelacionado.addEventListener('click', function () {
+        relacionadosCarrusel.scrollBy({ left: pasoScroll(), behavior: 'smooth' });
+      });
+    }
+
+    if (acordeonMasInfo) {
+      const panels = acordeonMasInfo.querySelectorAll('details');
+
+      panels.forEach(function (panel) {
+        panel.addEventListener('toggle', function () {
+          if (!panel.open) return;
+
+          panels.forEach(function (otherPanel) {
+            if (otherPanel !== panel) {
+              otherPanel.open = false;
+            }
+          });
+        });
+      });
+    }
+  </script>
   </body>
 </html>

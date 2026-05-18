@@ -64,6 +64,18 @@
       <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <a href="index.html" class="font-display text-2xl tracking-wide text-brand-wine">Maison Elegance</a>
+          <button
+            id="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-mobile"
+            aria-label="Abrir menu principal"
+            class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white p-2 text-slate-700 md:hidden"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
           <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">
             <label for="buscar" class="sr-only">Buscar productos</label>
             <input
@@ -74,17 +86,27 @@
               class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine"
             />
           </form>
-          <nav aria-label="Cuenta" class="flex items-center gap-4 text-sm font-semibold">
+          <nav aria-label="Cuenta" class="hidden items-center gap-4 text-sm font-semibold md:flex">
             <a href="checkout.html" class="hover:text-brand-wine">Mi cuenta</a>
             <a href="carrito.html" class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine">Carrito</a>
           </nav>
         </div>
-        <nav aria-label="Principal" class="mt-3 flex flex-wrap gap-5 text-sm font-semibold text-slate-700">
+        <nav aria-label="Principal" class="mt-3 hidden flex-wrap gap-5 text-sm font-semibold text-slate-700 md:flex">
           <a href="index.html" class="text-brand-wine">Home</a>
           <a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a>
           <a href="producto.html" class="hover:text-brand-wine">Vista de producto</a>
           <a href="carrito.html" class="hover:text-brand-wine">Carrito</a>
           <a href="checkout.html" class="hover:text-brand-wine">Checkout</a>
+        </nav>
+        <nav id="menu-mobile" aria-label="Menu movil" class="mt-3 hidden rounded-2xl border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700 shadow md:hidden">
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-brand-wine">Home</a></li>
+            <li><a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a></li>
+            <li><a href="producto.html" class="hover:text-brand-wine">Vista de producto</a></li>
+            <li><a href="carrito.html" class="hover:text-brand-wine">Carrito</a></li>
+            <li><a href="checkout.html" class="hover:text-brand-wine">Checkout</a></li>
+            <li><a href="checkout.html" class="hover:text-brand-wine">Mi cuenta</a></li>
+          </ul>
         </nav>
       </div>
     </header>
@@ -144,7 +166,7 @@
             <p class="text-sm text-slate-600">79.00 EUR</p>
           </article>
           <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
-            <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=700&q=80" alt="Pantalon sastre" class="h-64 w-full rounded-xl object-cover" />
+            <img src="https://siercomoda.com/wp-content/uploads/2024/08/pantalon-cannes-negro-mod-aw25-eseoese-1_l-683x1024.webp" alt="Pantalon sastre" class="h-64 w-full rounded-xl object-cover" />
             <h3 class="mt-3 font-semibold">Pantalon Cannes</h3>
             <p class="text-sm text-slate-600">95.00 EUR</p>
           </article>
@@ -163,17 +185,17 @@
             <p class="text-sm text-slate-600">179.00 EUR</p>
           </article>
           <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
-            <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=700&q=80" alt="Conjunto neutro" class="h-64 w-full rounded-xl object-cover" />
+            <img src="https://acdn-us.mitiendanube.com/stores/775/338/products/img_1109-f140f1874e5b0673eb17718694365617-480-0.webp" alt="Conjunto neutro" class="h-64 w-full rounded-xl object-cover" />
             <h3 class="mt-3 font-semibold">Set Bastille</h3>
             <p class="text-sm text-slate-600">139.00 EUR</p>
           </article>
           <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
-            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80" alt="Falda midi" class="h-64 w-full rounded-xl object-cover" />
+            <img src="https://img01.ztat.net/article/spp-media-p1/60e0ada3bdf04d2c88a0ea05aa7ef381/ba7bb117f4294cab9b8db54de0247d81.jpg?imwidth=300&filter=packshot" alt="Falda midi" class="h-64 w-full rounded-xl object-cover" />
             <h3 class="mt-3 font-semibold">Falda Opera</h3>
             <p class="text-sm text-slate-600">89.00 EUR</p>
           </article>
           <article class="min-w-64 rounded-2xl bg-white p-3 shadow">
-            <img src="https://images.unsplash.com/photo-1464863979621-258859e62245?auto=format&fit=crop&w=700&q=80" alt="Accesorios premium" class="h-64 w-full rounded-xl object-cover" />
+            <img src="https://www.beautyhabit.com/cdn/shop/files/49805-6-min.jpg?v=1717783137" alt="Accesorios premium" class="h-64 w-full rounded-xl object-cover" />
             <h3 class="mt-3 font-semibold">Pack Saint-Honore</h3>
             <p class="text-sm text-slate-600">62.00 EUR</p>
           </article>
@@ -210,5 +232,24 @@
         </section>
       </div>
     </footer>
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("menu-mobile");
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", () => {
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+          menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.add("hidden");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+    </script>
   </body>
 </html>
