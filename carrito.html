@@ -1,26 +1,34 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito | Maison Elegance</title>
     <meta
       name="description"
       content="Revisa los productos agregados al carrito, cantidades, subtotal, impuestos y total de compra en Maison Elegance."
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-ink": "#0f172a",
+              "brand-wine": "#7f1d1d",
+              "brand-cream": "#fff8ef"
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap"
       rel="stylesheet"
-    />
-    <style type="text/tailwindcss">
-      @theme {
-        --color-brand-ink: #0f172a;
-        --color-brand-wine: #7f1d1d;
-        --color-brand-cream: #fff8ef;
-      }
+    >
+    <style>
 
       body {
         font-family: "Manrope", sans-serif;
@@ -39,103 +47,156 @@
       }
     </script>
   </head>
-  <body class="bg-brand-cream text-brand-ink">
+  <body class="flex min-h-screen flex-col overflow-x-hidden bg-brand-cream text-brand-ink antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-ink">
+      Saltar al contenido principal
+    </a>
     <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-[1800px] px-4 py-3 sm:px-6 lg:px-10 2xl:px-16">
         <div class="flex flex-wrap items-center justify-between gap-4">
           <a href="index.html" class="font-display text-2xl tracking-wide text-brand-wine">Maison Elegance</a>
-          <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md">
+          <button
+            id="mobileMenuButton"
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 bg-white text-slate-800 transition hover:border-brand-wine hover:text-brand-wine sm:hidden"
+            aria-label="Abrir menu de navegacion"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="h-6 w-6" aria-hidden="true">
+              <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+          <form class="order-3 w-full sm:order-none sm:w-auto sm:flex-1 sm:max-w-md" role="search" aria-label="Buscar en la tienda">
             <label for="buscar" class="sr-only">Buscar productos</label>
             <input
               id="buscar"
               name="buscar"
               type="search"
               placeholder="Buscar blazers, vestidos, accesorios..."
-              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-sm outline-none transition focus:border-brand-wine"
-            />
+              class="w-full rounded-full border border-slate-300 bg-slate-50 px-4 py-2 text-base outline-none transition focus:border-brand-wine">
           </form>
-          <nav aria-label="Cuenta" class="flex items-center gap-4 text-sm font-semibold">
+          <nav aria-label="Cuenta" class="hidden items-center gap-4 text-base font-semibold sm:flex">
             <a href="checkout.html" class="hover:text-brand-wine">Mi cuenta</a>
             <a href="carrito.html" class="rounded-full bg-brand-ink px-4 py-2 text-white hover:bg-brand-wine">Carrito</a>
           </nav>
         </div>
-        <nav aria-label="Principal" class="mt-3 flex flex-wrap gap-5 text-sm font-semibold text-slate-700">
+        <nav aria-label="Principal" class="mt-3 hidden flex-wrap gap-5 text-base font-semibold text-slate-700 sm:flex">
           <a href="index.html" class="hover:text-brand-wine">Home</a>
           <a href="catalogo.html" class="hover:text-brand-wine">Catalogo</a>
           <a href="producto.html" class="hover:text-brand-wine">Vista de producto</a>
           <a href="carrito.html" class="text-brand-wine">Carrito</a>
           <a href="checkout.html" class="hover:text-brand-wine">Checkout</a>
         </nav>
+        <nav
+          id="mobileMenu"
+          aria-label="Menu movil"
+          class="mt-3 hidden flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-3 text-base font-semibold text-slate-700 sm:hidden"
+        >
+          <a href="index.html" class="rounded-lg px-3 py-2 transition hover:bg-slate-100">Home</a>
+          <a href="catalogo.html" class="rounded-lg px-3 py-2 transition hover:bg-slate-100">Catalogo</a>
+          <a href="producto.html" class="rounded-lg px-3 py-2 transition hover:bg-slate-100">Vista de producto</a>
+          <a href="carrito.html" class="rounded-lg bg-slate-100 px-3 py-2 text-brand-wine">Carrito</a>
+          <a href="checkout.html" class="rounded-lg px-3 py-2 transition hover:bg-slate-100">Checkout</a>
+          <div class="my-1 h-px bg-slate-200" aria-hidden="true"></div>
+          <a href="checkout.html" class="rounded-lg px-3 py-2 transition hover:bg-slate-100">Mi cuenta</a>
+        </nav>
       </div>
     </header>
 
-    <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 class="font-display text-4xl text-slate-900">Tu carrito</h1>
-      <p class="mt-2 text-slate-700">Revisa tus productos antes de continuar al pago.</p>
+    <main id="main-content" class="mx-auto w-full max-w-[1800px] px-4 py-8 sm:px-6 sm:py-12 lg:flex lg:min-h-[calc(100vh-84px)] lg:flex-col lg:px-10 xl:py-14 2xl:px-16">
+      <header>
+        <h1 class="font-display text-4xl text-slate-900 xl:text-5xl">Tu carrito</h1>
+        <p class="mt-2 text-slate-700">Gestiona productos, cantidades y confirma tu pedido con una experiencia fluida.</p>
+      </header>
 
-      <div class="mt-8 grid gap-8 lg:grid-cols-3">
-        <section class="space-y-4 lg:col-span-2">
-          <article class="grid gap-4 rounded-2xl bg-white p-4 shadow sm:grid-cols-[110px_1fr_auto] sm:items-center">
-            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500&q=80" alt="Blazer Montmartre" class="h-24 w-full rounded-xl object-cover">
-            <div>
-              <h2 class="font-semibold">Blazer Montmartre</h2>
-              <p class="text-sm text-slate-600">Precio unitario: 129.00 EUR</p>
-              <label for="cant-1" class="mt-2 block text-sm font-semibold">Cantidad</label>
-              <input id="cant-1" type="number" min="1" value="1" class="mt-1 w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm">
-            </div>
-            <p class="text-lg font-bold">129.00 EUR</p>
-          </article>
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" aria-labelledby="mobile-cart-summary-title">
+        <h2 id="mobile-cart-summary-title" class="sr-only">Resumen movil del carrito</h2>
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p class="text-sm text-slate-600">Productos en carrito</p>
+            <p id="mobileItemsCount" class="text-lg font-bold text-slate-900">0 items</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-slate-600">Total</p>
+            <p id="mobileTotal" class="text-lg font-bold text-brand-wine">EUR 0.00</p>
+          </div>
+        </div>
+      </section>
 
-          <article class="grid gap-4 rounded-2xl bg-white p-4 shadow sm:grid-cols-[110px_1fr_auto] sm:items-center">
-            <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=500&q=80" alt="Vestido Louvre" class="h-24 w-full rounded-xl object-cover">
-            <div>
-              <h2 class="font-semibold">Vestido Louvre</h2>
-              <p class="text-sm text-slate-600">Precio unitario: 149.00 EUR</p>
-              <label for="cant-2" class="mt-2 block text-sm font-semibold">Cantidad</label>
-              <input id="cant-2" type="number" min="1" value="1" class="mt-1 w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm">
-            </div>
-            <p class="text-lg font-bold">149.00 EUR</p>
-          </article>
+      <div class="mt-6 grid gap-6 lg:flex-1 lg:grid-cols-[1.4fr_0.6fr] lg:items-stretch lg:gap-8 xl:gap-10 2xl:grid-cols-[1.5fr_0.5fr]">
+        <section aria-labelledby="cart-products-title" class="space-y-4 lg:flex lg:h-full lg:flex-col">
+          <h2 id="cart-products-title" class="sr-only">Productos en carrito</h2>
+          <div id="cartStatus" class="hidden rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700" aria-live="polite"></div>
 
-          <article class="grid gap-4 rounded-2xl bg-white p-4 shadow sm:grid-cols-[110px_1fr_auto] sm:items-center">
-            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=500&q=80" alt="Camisa Rive Gauche" class="h-24 w-full rounded-xl object-cover">
-            <div>
-              <h2 class="font-semibold">Camisa Rive Gauche</h2>
-              <p class="text-sm text-slate-600">Precio unitario: 79.00 EUR</p>
-              <label for="cant-3" class="mt-2 block text-sm font-semibold">Cantidad</label>
-              <input id="cant-3" type="number" min="1" value="2" class="mt-1 w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm">
-            </div>
-            <p class="text-lg font-bold">158.00 EUR</p>
-          </article>
+          <div id="cartSkeleton" class="space-y-3" aria-hidden="true">
+            <div class="h-28 animate-pulse rounded-2xl bg-white shadow"></div>
+            <div class="h-28 animate-pulse rounded-2xl bg-white shadow"></div>
+            <div class="h-28 animate-pulse rounded-2xl bg-white shadow"></div>
+          </div>
+
+          <div id="cartItems" class="space-y-4"></div>
+
+          <section id="emptyCart" class="hidden rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center">
+            <h2 class="font-display text-2xl text-slate-900">Tu carrito esta vacio</h2>
+            <p class="mt-2 text-sm text-slate-600">Agrega productos desde el catalogo para continuar con tu checkout.</p>
+            <a
+              href="catalogo.html"
+              class="mt-5 inline-flex min-h-11 items-center justify-center rounded-full bg-brand-ink px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-wine"
+            >
+              Explorar productos
+            </a>
+          </section>
+
+          <footer class="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow sm:flex-row sm:items-center sm:justify-between xl:p-5 lg:mt-auto">
+            <a
+              href="catalogo.html"
+              class="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-brand-wine hover:text-brand-wine"
+            >
+              Continuar comprando
+            </a>
+            <a
+              id="goCheckoutBtn"
+              href="checkout.html"
+              class="inline-flex min-h-11 items-center justify-center rounded-full bg-brand-ink px-6 py-2.5 text-sm font-bold text-white transition hover:bg-brand-wine"
+            >
+              Ir al checkout
+            </a>
+          </footer>
         </section>
 
-        <aside class="h-fit rounded-2xl bg-white p-5 shadow">
-          <h2 class="font-display text-2xl text-slate-900">Resumen</h2>
+        <aside class="h-fit rounded-2xl bg-white p-5 shadow lg:self-start lg:sticky lg:top-24 xl:p-6" aria-labelledby="cart-summary-title">
+          <h2 id="cart-summary-title" class="font-display text-2xl text-slate-900">Resumen</h2>
+          <p class="mt-1 text-sm text-slate-600">Actualizacion automatica en tiempo real.</p>
+
           <dl class="mt-4 space-y-3 text-sm">
             <div class="flex items-center justify-between">
+              <dt class="text-slate-600">Cantidad total</dt>
+              <dd id="summaryItemsCount" class="font-semibold">0</dd>
+            </div>
+            <div class="flex items-center justify-between">
               <dt class="text-slate-600">Subtotal</dt>
-              <dd class="font-semibold">436.00 EUR</dd>
+              <dd id="summarySubtotal" class="font-semibold">EUR 0.00</dd>
             </div>
             <div class="flex items-center justify-between">
               <dt class="text-slate-600">Impuestos (21%)</dt>
-              <dd class="font-semibold">91.56 EUR</dd>
+              <dd id="summaryTax" class="font-semibold">EUR 0.00</dd>
             </div>
-            <div class="border-t border-slate-200 pt-3 flex items-center justify-between">
+            <div class="flex items-center justify-between border-t border-slate-200 pt-3">
               <dt class="font-bold text-slate-900">Total</dt>
-              <dd class="text-xl font-extrabold text-brand-wine">527.56 EUR</dd>
+              <dd id="summaryTotal" class="text-xl font-extrabold text-brand-wine">EUR 0.00</dd>
             </div>
           </dl>
-          <a href="checkout.html" class="mt-6 block w-full rounded-full bg-brand-ink px-6 py-3 text-center text-sm font-bold text-white hover:bg-brand-wine">
-            Comprar
-          </a>
+
+          <p class="mt-5 text-xs text-slate-500">Tus datos de carrito se guardan automaticamente para continuar en checkout.</p>
         </aside>
       </div>
     </main>
 
-    <footer class="border-t border-slate-200 bg-white">
-      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-8">
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Categorias</h2>
+    <footer class="mt-8 lg:mt-10 border-t border-slate-200 bg-white" aria-label="Pie de pagina">
+      <div class="mx-auto grid max-w-[1800px] gap-8 px-4 py-12 sm:px-6 md:grid-cols-3 lg:px-10 2xl:px-16">
+        <section aria-labelledby="cart-footer-categorias-title">
+          <h2 id="cart-footer-categorias-title" class="font-display text-xl text-slate-900">Categorias</h2>
           <ul class="mt-3 space-y-2 text-sm text-slate-700">
             <li><a href="catalogo.html" class="hover:text-brand-wine">Calzado</a></li>
             <li><a href="catalogo.html" class="hover:text-brand-wine">Camisas</a></li>
@@ -143,16 +204,16 @@
             <li><a href="catalogo.html" class="hover:text-brand-wine">Accesorios</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Legal</h2>
+        <section aria-labelledby="cart-footer-legal-title">
+          <h2 id="cart-footer-legal-title" class="font-display text-xl text-slate-900">Legal</h2>
           <ul class="mt-3 space-y-2 text-sm text-slate-700">
             <li><a href="#" class="hover:text-brand-wine">Terminos y condiciones</a></li>
             <li><a href="#" class="hover:text-brand-wine">Politica de privacidad</a></li>
             <li><a href="#" class="hover:text-brand-wine">Sobre la marca</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="font-display text-xl text-slate-900">Contacto</h2>
+        <section aria-labelledby="cart-footer-contacto-title">
+          <h2 id="cart-footer-contacto-title" class="font-display text-xl text-slate-900">Contacto</h2>
           <ul class="mt-3 space-y-2 text-sm text-slate-700">
             <li>Email: support@maison-elegance.fr</li>
             <li>Telefono: +33 1 22 33 44 55</li>
@@ -161,5 +222,240 @@
         </section>
       </div>
     </footer>
+
+    <script>
+      const CART_KEY = "maisonCart";
+      const TAX_RATE = 0.21;
+      const DEFAULT_CART = [
+        {
+          id: "blazer-montmartre",
+          name: "Blazer Montmartre",
+          price: 129,
+          quantity: 1,
+          image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500&q=80"
+        },
+        {
+          id: "vestido-louvre",
+          name: "Vestido Louvre",
+          price: 149,
+          quantity: 1,
+          image: "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=500&q=80"
+        },
+        {
+          id: "camisa-rive-gauche",
+          name: "Camisa Rive Gauche",
+          price: 79,
+          quantity: 2,
+          image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=500&q=80"
+        }
+      ];
+
+      const cartItemsContainer = document.getElementById("cartItems");
+      const emptyCartPanel = document.getElementById("emptyCart");
+      const cartSkeleton = document.getElementById("cartSkeleton");
+      const cartStatus = document.getElementById("cartStatus");
+      const goCheckoutBtn = document.getElementById("goCheckoutBtn");
+
+      const mobileItemsCount = document.getElementById("mobileItemsCount");
+      const mobileTotal = document.getElementById("mobileTotal");
+      const summaryItemsCount = document.getElementById("summaryItemsCount");
+      const summarySubtotal = document.getElementById("summarySubtotal");
+      const summaryTax = document.getElementById("summaryTax");
+      const summaryTotal = document.getElementById("summaryTotal");
+
+      const eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" });
+
+      function loadCart() {
+        try {
+          const raw = localStorage.getItem(CART_KEY);
+          if (!raw) {
+            localStorage.setItem(CART_KEY, JSON.stringify(DEFAULT_CART));
+            return [...DEFAULT_CART];
+          }
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) throw new Error("Carrito invalido");
+          return parsed.filter((item) => item && item.id && item.name && Number(item.price) > 0);
+        } catch {
+          localStorage.setItem(CART_KEY, JSON.stringify(DEFAULT_CART));
+          return [...DEFAULT_CART];
+        }
+      }
+
+      function saveCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        window.dispatchEvent(new CustomEvent("cart:updated", { detail: cart }));
+      }
+
+      function getTotals(cart) {
+        const items = cart.reduce((acc, item) => acc + item.quantity, 0);
+        const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        const tax = subtotal * TAX_RATE;
+        const total = subtotal + tax;
+        return { items, subtotal, tax, total };
+      }
+
+      function showStatus(message) {
+        cartStatus.textContent = message;
+        cartStatus.classList.remove("hidden");
+        setTimeout(() => cartStatus.classList.add("hidden"), 1300);
+      }
+
+      function createItemCard(item) {
+        const subtotal = item.price * item.quantity;
+        return `
+          <article data-id="${item.id}" class="group grid gap-4 rounded-2xl bg-white p-4 shadow transition duration-300 hover:shadow-md sm:grid-cols-[110px_1fr_auto] sm:items-center xl:grid-cols-[132px_1fr_auto] xl:gap-5 xl:p-5">
+            <img src="${item.image}" alt="${item.name}" class="h-24 w-full rounded-xl object-cover xl:h-28" loading="lazy">
+            <div>
+              <h2 class="font-semibold text-slate-900">${item.name}</h2>
+              <p class="text-sm text-slate-600">Precio unitario: ${eur.format(item.price)}</p>
+
+              <div class="mt-3 flex flex-wrap items-center gap-2">
+                <span class="text-sm font-semibold text-slate-700">Cantidad</span>
+                <div class="inline-flex items-center rounded-full border border-slate-300 bg-slate-50">
+                  <button type="button" data-action="decrease" data-id="${item.id}" class="h-9 w-9 rounded-l-full text-lg font-bold text-slate-700 transition hover:bg-slate-200" aria-label="Disminuir cantidad de ${item.name}">-</button>
+                  <input
+                    data-input-id="${item.id}"
+                    type="number"
+                    min="1"
+                    value="${item.quantity}"
+                    class="h-9 w-14 border-x border-slate-300 bg-white text-center text-sm font-semibold text-slate-800 outline-none"
+                    aria-label="Cantidad de ${item.name}">
+                  <button type="button" data-action="increase" data-id="${item.id}" class="h-9 w-9 rounded-r-full text-lg font-bold text-slate-700 transition hover:bg-slate-200" aria-label="Aumentar cantidad de ${item.name}">+</button>
+                </div>
+
+                <button
+                  type="button"
+                  data-action="remove"
+                  data-id="${item.id}"
+                  class="inline-flex min-h-9 items-center justify-center rounded-full border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-600 transition hover:bg-rose-50"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+
+            <div class="text-right">
+              <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Subtotal</p>
+              <p class="mt-1 text-lg font-bold text-slate-900">${eur.format(subtotal)}</p>
+            </div>
+          </article>
+        `;
+      }
+
+      function render(cart, options = {}) {
+        const { skipSkeleton = false } = options;
+
+        if (!skipSkeleton) {
+          cartSkeleton.classList.remove("hidden");
+          cartItemsContainer.classList.add("hidden");
+          setTimeout(() => render(cart, { skipSkeleton: true }), 280);
+          return;
+        }
+
+        cartSkeleton.classList.add("hidden");
+        cartItemsContainer.classList.remove("hidden");
+
+        if (!cart.length) {
+          cartItemsContainer.innerHTML = "";
+          emptyCartPanel.classList.remove("hidden");
+          goCheckoutBtn.classList.add("pointer-events-none", "opacity-50");
+          mobileItemsCount.textContent = "0 items";
+          mobileTotal.textContent = eur.format(0);
+          summaryItemsCount.textContent = "0";
+          summarySubtotal.textContent = eur.format(0);
+          summaryTax.textContent = eur.format(0);
+          summaryTotal.textContent = eur.format(0);
+          return;
+        }
+
+        emptyCartPanel.classList.add("hidden");
+        goCheckoutBtn.classList.remove("pointer-events-none", "opacity-50");
+
+        cartItemsContainer.innerHTML = cart.map((item) => createItemCard(item)).join("");
+
+        const totals = getTotals(cart);
+        mobileItemsCount.textContent = `${totals.items} ${totals.items === 1 ? "item" : "items"}`;
+        mobileTotal.textContent = eur.format(totals.total);
+        summaryItemsCount.textContent = String(totals.items);
+        summarySubtotal.textContent = eur.format(totals.subtotal);
+        summaryTax.textContent = eur.format(totals.tax);
+        summaryTotal.textContent = eur.format(totals.total);
+      }
+
+      function updateQuantity(cart, id, quantity) {
+        const sanitizedQty = Number.isFinite(quantity) && quantity > 0 ? Math.floor(quantity) : 1;
+        return cart.map((item) => (item.id === id ? { ...item, quantity: sanitizedQty } : item));
+      }
+
+      let cart = loadCart();
+      render(cart);
+
+      cartItemsContainer.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-action]");
+        if (!button) return;
+        const action = button.dataset.action;
+        const id = button.dataset.id;
+        const item = cart.find((current) => current.id === id);
+        if (!item) return;
+
+        if (action === "increase") {
+          cart = updateQuantity(cart, id, item.quantity + 1);
+          saveCart(cart);
+          render(cart, { skipSkeleton: true });
+          showStatus("Cantidad actualizada.");
+        }
+
+        if (action === "decrease") {
+          cart = updateQuantity(cart, id, Math.max(1, item.quantity - 1));
+          saveCart(cart);
+          render(cart, { skipSkeleton: true });
+          showStatus("Cantidad actualizada.");
+        }
+
+        if (action === "remove") {
+          const card = button.closest("article");
+          if (card) {
+            card.classList.add("opacity-0", "-translate-x-2", "duration-300");
+          }
+          setTimeout(() => {
+            cart = cart.filter((current) => current.id !== id);
+            saveCart(cart);
+            render(cart, { skipSkeleton: true });
+            showStatus("Producto eliminado del carrito.");
+          }, 220);
+        }
+      });
+
+      cartItemsContainer.addEventListener("change", (event) => {
+        const input = event.target.closest("input[data-input-id]");
+        if (!input) return;
+        const id = input.dataset.inputId;
+        const nextQty = Number(input.value);
+        cart = updateQuantity(cart, id, nextQty);
+        saveCart(cart);
+        render(cart, { skipSkeleton: true });
+        showStatus("Cantidad actualizada.");
+      });
+
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
+          mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+          mobileMenu.classList.toggle("hidden", isOpen);
+          mobileMenu.classList.toggle("flex", !isOpen);
+        });
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+            mobileMenu.classList.add("hidden");
+            mobileMenu.classList.remove("flex");
+          });
+        });
+      }
+    </script>
   </body>
 </html>
